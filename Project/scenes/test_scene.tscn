@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmt1ygnyy8ru1"]
+[gd_scene load_steps=3 format=3 uid="uid://cmt1ygnyy8ru1"]
 
 [ext_resource type="Script" path="res://scenes/test_scene_scenario.gd" id="1_lfigb"]
+[ext_resource type="PackedScene" uid="uid://bww7yy3nfddo0" path="res://assets/carte/carte.tscn" id="2_t5otb"]
 
 [node name="test_scene" type="Node2D"]
 script = ExtResource("1_lfigb")
+
+[node name="carte" parent="." instance=ExtResource("2_t5otb")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
