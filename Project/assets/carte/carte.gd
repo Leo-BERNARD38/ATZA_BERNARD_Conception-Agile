@@ -2,6 +2,10 @@ extends Node2D
 
 @onready var card_text := $Sprite2D/Valeur_carte as Label
 var valeur_carte
+var animation_weight = 0.2
+var is_hovered = false
+var base_scale = 0.8
+var zoom = 1.3
 # Called when the node enters the scene tree for the first time.
 
 
@@ -17,5 +21,23 @@ func _ready():
 	valuechange(100)
 	pass # Replace with function body.
 
+func resize_animation(boolean):
+	if(boolean == true):
+		self.scale.x = lerpf(self.scale.x, base_scale * zoom,animation_weight)
+		self.scale.y = lerpf(self.scale.y, base_scale * zoom,animation_weight)
+	else:
+		self.scale.x = lerpf(self.scale.x, base_scale,animation_weight)
+		self.scale.y = lerpf(self.scale.y, base_scale,animation_weight)
+	pass
+
+func _on_clickingarea_mouse_entered():
+	is_hovered = true
+	pass # Replace with function body.
 
 
+func _on_clickingarea_mouse_exited():
+	is_hovered = false
+	pass # Replace with function body.
+
+func _physics_process(delta):
+	resize_animation(is_hovered)
