@@ -53,3 +53,4 @@ func _on_clickingarea_mouse_exited():
 
 func _physics_process(delta):
 	resize_animation(is_hovered)
+

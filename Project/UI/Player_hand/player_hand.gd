@@ -14,7 +14,7 @@ func _ready():
 			1:
 				var new_slot = card_slot.instantiate()
 				current_hand.add_child(new_slot)
-				current_hand.get_child(i).changevalue(0)
+				current_hand.get_child(i).changevalue(0.5)
 			2:
 				var new_slot = card_slot.instantiate()
 				current_hand.add_child(new_slot)
