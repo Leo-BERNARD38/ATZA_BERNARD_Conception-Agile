@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bww7yy3nfddo0"]
+[gd_scene load_steps=6 format=3 uid="uid://bww7yy3nfddo0"]
 
 [ext_resource type="Script" path="res://assets/carte/carte.gd" id="1_jg8g5"]
 [ext_resource type="Texture2D" uid="uid://8i8saime1oox" path="res://assets/carte/carte_template.png" id="2_07t6i"]
 [ext_resource type="Theme" uid="uid://dy7jnp30hmped" path="res://assets/carte/carte.theme" id="3_b3tq0"]
+[ext_resource type="AudioStream" uid="uid://bnqyvmte0xxm6" path="res://assets/carte/DrawingCard SFX.mp3" id="4_oo57h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_16b8f"]
 size = Vector2(256, 356)
@@ -34,6 +35,9 @@ horizontal_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="clickingarea"]
 shape = SubResource("RectangleShape2D_16b8f")
+
+[node name="Son" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_oo57h")
 
 [connection signal="mouse_entered" from="clickingarea" to="." method="_on_clickingarea_mouse_entered"]
 [connection signal="mouse_exited" from="clickingarea" to="." method="_on_clickingarea_mouse_exited"]

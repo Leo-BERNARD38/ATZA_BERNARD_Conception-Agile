@@ -14,9 +14,6 @@ func create_card():
 	get_child(1).valuechange(value)
 	pass
 
-func setvalue(v):
-	value = v
-	pass
-
 func changevalue(v):
 	value = v
+	get_child(1).valuechange(value)

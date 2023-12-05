@@ -5,41 +5,53 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var new_slot = card_slot.instantiate()
-	for i in range(10):
-		if(i==0):
-			current_hand.add_child(new_slot)
-			current_hand.get_child(i).changevalue(0)
-		if(i==1):
-			current_hand.add_child(new_slot)
-			current_hand.get_child(i).changevalue(0)
-		if(i==2):
-			current_hand.add_child(new_slot)
-			current_hand.get_child(i).changevalue(1)
-		if(i==3):
-			current_hand.add_child(new_slot)
-			current_hand.get_child(i).changevalue(2)
-		if(i==4):
-			current_hand.add_child(new_slot)
-			current_hand.get_child(i).changevalue(5)
-		if(i==5):
-			current_hand.add_child(new_slot)
-			current_hand.get_child(i).changevalue(8)
-		if(i==6):
-			current_hand.add_child(new_slot)
-			current_hand.get_child(i).changevalue(13)
-		if(i==7):
-			current_hand.add_child(new_slot)
-			current_hand.get_child(i).changevalue(20)
-		if(i==8):
-			current_hand.add_child(new_slot)
-			current_hand.get_child(i).changevalue(40)
-		if(i==9):
-			current_hand.add_child(new_slot)
-			current_hand.get_child(i).changevalue(60)
-		if(i==10):
-			current_hand.add_child(new_slot)
-			current_hand.get_child(i).changevalue(100)
+	for i in range(11):
+		match i:
+			0:
+				var new_slot = card_slot.instantiate()
+				current_hand.add_child(new_slot)
+				current_hand.get_child(i).changevalue(0)
+			1:
+				var new_slot = card_slot.instantiate()
+				current_hand.add_child(new_slot)
+				current_hand.get_child(i).changevalue(0)
+			2:
+				var new_slot = card_slot.instantiate()
+				current_hand.add_child(new_slot)
+				current_hand.get_child(i).changevalue(1)
+			3:
+				var new_slot = card_slot.instantiate()
+				current_hand.add_child(new_slot)
+				current_hand.get_child(i).changevalue(2)
+			4:
+				var new_slot = card_slot.instantiate()
+				current_hand.add_child(new_slot)
+				current_hand.get_child(i).changevalue(5)
+			5:
+				var new_slot = card_slot.instantiate()
+				current_hand.add_child(new_slot)
+				current_hand.get_child(i).changevalue(8)
+			6:
+				var new_slot = card_slot.instantiate()
+				current_hand.add_child(new_slot)
+				current_hand.get_child(i).changevalue(13)
+			7:
+				var new_slot = card_slot.instantiate()
+				current_hand.add_child(new_slot)
+				current_hand.get_child(i).changevalue(20)
+			8:
+				var new_slot = card_slot.instantiate()
+				current_hand.add_child(new_slot)
+				current_hand.get_child(i).changevalue(40)
+			9:
+				var new_slot = card_slot.instantiate()
+				current_hand.add_child(new_slot)
+				current_hand.get_child(i).changevalue(60)
+			10:
+				var new_slot = card_slot.instantiate()
+				current_hand.add_child(new_slot)
+				current_hand.get_child(i).changevalue(100)
+		
 	pass # Replace with function body.
 
 
