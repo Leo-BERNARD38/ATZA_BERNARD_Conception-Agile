@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bt3c7c068skgb"]
+[gd_scene load_steps=4 format=3 uid="uid://bt3c7c068skgb"]
 
 [ext_resource type="PackedScene" uid="uid://c7vo8yrrrg1lj" path="res://UI/card_slot/card_slot.tscn" id="1_65tuh"]
 [ext_resource type="Script" path="res://UI/Player_hand/player_hand.gd" id="1_mf3r3"]
+[ext_resource type="PackedScene" uid="uid://bww7yy3nfddo0" path="res://assets/carte/carte.tscn" id="3_jpyad"]
 
-[node name="PlayerHand" type="Control" node_paths=PackedStringArray("current_hand")]
+[node name="PlayerHand" type="Control" node_paths=PackedStringArray("current_hand", "DEBUG_TEXT")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_mf3r3")
 current_hand = NodePath("MarginContainer/VBoxContainer/main_hand")
 card_slot = ExtResource("1_65tuh")
+DEBUG_TEXT = NodePath("DEBUG")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -31,3 +33,63 @@ alignment = 2
 layout_direction = 1
 layout_mode = 2
 alignment = 1
+
+[node name="carte" parent="." instance=ExtResource("3_jpyad")]
+position = Vector2(-560, 0)
+scale = Vector2(0.4, 0.4)
+
+[node name="carte2" parent="." instance=ExtResource("3_jpyad")]
+position = Vector2(-448, 0)
+scale = Vector2(0.4, 0.4)
+valeur_carte = 0.5
+
+[node name="carte3" parent="." instance=ExtResource("3_jpyad")]
+position = Vector2(-336, 0)
+scale = Vector2(0.4, 0.4)
+valeur_carte = 1.0
+
+[node name="carte4" parent="." instance=ExtResource("3_jpyad")]
+position = Vector2(-224, 0)
+scale = Vector2(0.4, 0.4)
+valeur_carte = 2.0
+
+[node name="carte5" parent="." instance=ExtResource("3_jpyad")]
+position = Vector2(-112, 0)
+scale = Vector2(0.4, 0.4)
+valeur_carte = 5.0
+
+[node name="carte6" parent="." instance=ExtResource("3_jpyad")]
+scale = Vector2(0.4, 0.4)
+valeur_carte = 8.0
+
+[node name="carte7" parent="." instance=ExtResource("3_jpyad")]
+position = Vector2(112, 0)
+scale = Vector2(0.4, 0.4)
+valeur_carte = 13.0
+
+[node name="carte8" parent="." instance=ExtResource("3_jpyad")]
+position = Vector2(224, 0)
+scale = Vector2(0.4, 0.4)
+valeur_carte = 20.0
+
+[node name="carte9" parent="." instance=ExtResource("3_jpyad")]
+position = Vector2(336, 0)
+scale = Vector2(0.4, 0.4)
+valeur_carte = 40.0
+
+[node name="carte10" parent="." instance=ExtResource("3_jpyad")]
+position = Vector2(448, 0)
+scale = Vector2(0.4, 0.4)
+valeur_carte = 60.0
+
+[node name="carte11" parent="." instance=ExtResource("3_jpyad")]
+position = Vector2(560, 0)
+scale = Vector2(0.4, 0.4)
+valeur_carte = 100.0
+
+[node name="DEBUG" type="Label" parent="."]
+layout_mode = 0
+offset_left = 344.0
+offset_top = -171.0
+offset_right = 384.0
+offset_bottom = -148.0

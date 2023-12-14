@@ -9,6 +9,7 @@
 size = Vector2(256, 356)
 
 [node name="carte" type="Node2D"]
+z_index = 1
 script = ExtResource("1_jg8g5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

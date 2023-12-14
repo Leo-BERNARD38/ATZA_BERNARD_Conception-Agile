@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds8u74cjd5ph7"]
+
+[ext_resource type="Script" path="res://UI/card_drop_area/card_drop_area.gd" id="1_nsuig"]
+[ext_resource type="Texture2D" uid="uid://d11fv0uyg648m" path="res://UI/card_drop_area/carte_drop_area.png" id="1_p8ptm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qps8d"]
+size = Vector2(256, 356)
+
+[node name="Card_Drop_Area" type="Area2D" node_paths=PackedStringArray("label_debug")]
+script = ExtResource("1_nsuig")
+label_debug = NodePath("Debug_Label")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qps8d")
+
+[node name="CarteDropArea" type="Sprite2D" parent="."]
+texture = ExtResource("1_p8ptm")
+
+[node name="Debug_Label" type="Label" parent="."]
+offset_left = -71.0
+offset_top = -274.0
+offset_right = -31.0
+offset_bottom = -251.0
+scale = Vector2(3.64115, 3.64115)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
