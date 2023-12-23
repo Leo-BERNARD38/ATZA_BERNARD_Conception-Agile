@@ -12,13 +12,14 @@ var base_size = Vector2.ZERO
 var zoom = 1.3
 @export var current_state = true
 var is_placed = false
-var new_pos = Vector2.ZERO
+var new_pos
 # Called when the node enters the scene tree for the first time.
 
 
 
 
 func _ready():
+	new_pos = Vector2.ZERO
 	base_size.x = 256
 	base_size.y = 356
 #	var p_px = get_parent().global_position.x
@@ -77,7 +78,11 @@ func get_to_pos(a):
 	is_placed == true
 	global_position.x = lerpf(global_position.x,a.x, animation_weight)
 	global_position.y = lerpf(global_position.y,a.y, animation_weight)
+
+func on_pickup():
 	
+	pass
+
 
 func _on_clickingarea_mouse_entered():
 	if Player_hand_node.took_a_card == false:
@@ -94,12 +99,12 @@ func _on_clickingarea_mouse_exited():
 
 func _process(delta):
 	if((is_hovered) and (Input.is_action_pressed("left_click")) and (current_state) and ((Player_hand_node.active_card_node == self) or (Player_hand_node.active_card_node == null))):
-		Player_hand_node.set_debug_text(self)
-		Player_hand_node.active_card_node = self
-		Player_hand_node.took_a_card = true
-		drag()
-		get_on_top(true)
-		pass
+			Player_hand_node.set_debug_text(self)
+			Player_hand_node.active_card_node = self
+			Player_hand_node.took_a_card = true
+			drag()
+			get_on_top(true)
+	pass
 
 func _physics_process(delta):
 	if(Player_hand_node.active_card_node == null):
@@ -107,7 +112,7 @@ func _physics_process(delta):
 	if (is_placed):
 		drop()
 	else:
-		if((Input.is_action_pressed("left_click") == false)):
+		if(!Input.is_action_pressed("left_click")):
 			drop()
 			Player_hand_node.active_card_node = null
 			if Player_hand_node.took_a_card == true:

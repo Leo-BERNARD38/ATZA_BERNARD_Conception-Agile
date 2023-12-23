@@ -14,5 +14,6 @@ offset_top = 240.0
 offset_bottom = 240.0
 
 [node name="Card_Drop_Area" parent="." node_paths=PackedStringArray("player_hand_node") instance=ExtResource("3_buk2f")]
-scale = Vector2(0.538741, 0.538741)
+position = Vector2(105, -60)
+scale = Vector2(1.04354, 0.272164)
 player_hand_node = NodePath("../PlayerHand")

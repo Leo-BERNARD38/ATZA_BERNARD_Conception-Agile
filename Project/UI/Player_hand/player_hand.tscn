@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://bt3c7c068skgb"]
+[gd_scene load_steps=3 format=3 uid="uid://bt3c7c068skgb"]
 
-[ext_resource type="PackedScene" uid="uid://c7vo8yrrrg1lj" path="res://UI/card_slot/card_slot.tscn" id="1_65tuh"]
 [ext_resource type="Script" path="res://UI/Player_hand/player_hand.gd" id="1_mf3r3"]
 [ext_resource type="PackedScene" uid="uid://bww7yy3nfddo0" path="res://assets/carte/carte.tscn" id="3_jpyad"]
 
@@ -13,7 +12,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mf3r3")
 current_hand = NodePath("MarginContainer/VBoxContainer/main_hand")
-card_slot = ExtResource("1_65tuh")
 DEBUG_TEXT = NodePath("DEBUG")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

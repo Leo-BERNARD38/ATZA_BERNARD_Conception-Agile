@@ -24,3 +24,4 @@ offset_bottom = -251.0
 scale = Vector2(3.64115, 3.64115)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
