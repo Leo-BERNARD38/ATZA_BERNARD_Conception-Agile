@@ -5,6 +5,10 @@ extends Control
 var took_a_card = false
 var active_card_node
 
+#COMMENTAIRE D'EN-TÊTE
+#... NODE QUI NOUS SERVIRA A ENVOYER LES INFOS DU JOUEUR A LA SCENE DE LA PARTIE EN COURS
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
