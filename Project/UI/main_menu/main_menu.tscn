@@ -1,0 +1,131 @@
+[gd_scene load_steps=11 format=3 uid="uid://c8bkyd6snw8br"]
+
+[ext_resource type="Script" path="res://UI/main_menu/main_menu.gd" id="1_62hsx"]
+[ext_resource type="Theme" uid="uid://j4j5fa0l3vp2" path="res://UI/main_menu/main_menu_theme.tres" id="1_k64cd"]
+[ext_resource type="PackedScene" uid="uid://030eebrjgld3" path="res://UI/main_menu/sub_menus/create_subm.tscn" id="2_ekw6g"]
+[ext_resource type="AudioStream" uid="uid://bpsjvyuclwekd" path="res://UI/hovering.mp3" id="3_6we4b"]
+[ext_resource type="PackedScene" uid="uid://d2wfxrw8tmreo" path="res://UI/main_menu/sub_menus/load_subm.tscn" id="3_8a1np"]
+[ext_resource type="AudioStream" uid="uid://hrcp5n2kdwua" path="res://UI/selected.wav" id="4_4ndqu"]
+[ext_resource type="AudioStream" uid="uid://cjxuur1kyc7b4" path="res://UI/notification.wav" id="5_52wxh"]
+
+[sub_resource type="Animation" id="Animation_ljmwy"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oidd5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xmyir"]
+_data = {
+"RESET": SubResource("Animation_oidd5"),
+"fade_in": SubResource("Animation_ljmwy")
+}
+
+[node name="Main_Menu" type="Control" node_paths=PackedStringArray("fade", "animation", "hoveringSFX", "selectedSFX", "backSFX")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_62hsx")
+fade = NodePath("fade")
+animation = NodePath("MenuAnimation")
+submenu_create = ExtResource("2_ekw6g")
+submenu_load = ExtResource("3_8a1np")
+hoveringSFX = NodePath("hovering")
+selectedSFX = NodePath("selected")
+backSFX = NodePath("back")
+
+[node name="MenuAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xmyir")
+}
+
+[node name="hovering" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_6we4b")
+
+[node name="selected" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_4ndqu")
+volume_db = -5.0
+
+[node name="back" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_52wxh")
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.894118, 0.784314, 0.776471, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 55.0
+offset_top = -101.0
+offset_right = 286.0
+offset_bottom = 101.0
+grow_vertical = 2
+theme_override_constants/separation = 26
+alignment = 1
+
+[node name="create" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_k64cd")
+text = "Créer une partie"
+
+[node name="load" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_k64cd")
+text = "Charger une partie"
+
+[node name="quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_k64cd")
+text = "Quitter le jeu
+"
+
+[node name="fade" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="animation_finished" from="MenuAnimation" to="." method="_on_menu_animation_animation_finished"]
+[connection signal="mouse_entered" from="VBoxContainer/create" to="." method="_on_create_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/create" to="." method="_on_create_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/load" to="." method="_on_load_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/load" to="." method="_on_load_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]

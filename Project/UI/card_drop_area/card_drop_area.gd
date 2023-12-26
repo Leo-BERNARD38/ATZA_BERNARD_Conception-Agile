@@ -1,10 +1,9 @@
 extends Area2D
 
-@export var player_hand_node: Control
+@export var player_hand_node: Node2D
 @export var label_debug: Label 
 @export var scene_partie: Node2D 
-var is_taken = false
-var card_node
+@onready var is_taken = false
 var card_value
 var is_hovered
 
@@ -18,6 +17,11 @@ func _ready():
 	pass # Replace with function body.
 
 
+func slot_purge():
+	card_value = null
+	is_taken = false
+	pass
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
@@ -28,7 +32,6 @@ func _process(delta):
 			label_debug.text = "ça hover"
 		else:
 			label_debug.text = ""
-	
 	#Si le joueur vient de lâcher le click gauche et que la zone n'est pas prise, que la zone est survolée et que le joueur (player_hand_node) a pris une carte
 	#... alors la carte prise par le joueur (player_hand_node.active_card_node) est définie comme placée
 	#... la valeur de la carte placée dans la case (card_value dans CE script) devient la valeur de la carte (via player_hand_node.active_card_node.valeur_carte)
@@ -42,13 +45,18 @@ func _process(delta):
 		is_taken = true
 		player_hand_node.active_card_node.new_pos = self.global_position
 		label_debug.text = str(player_hand_node.active_card_node.valeur_carte)
+		
+		player_hand_node.active_card_node.queue_free()
 		player_hand_node.took_a_card = false
 		player_hand_node.active_card_node = null
+		player_hand_node.next_turn_phase()
+		#slot_purge()
 		pass
 	pass
 
-
-
+func _physics_process(delta):
+	
+	pass
 
 #LES DEUX FONCTIONS SUIVANTES SONT DES FONCTIONS SIGNAL, ELLES S'ENCLENCHENT DANS CERTAINES CONDITIONS
 #Ici c'est quand une zone physic 2D entre en contact avec la zone physique de la case

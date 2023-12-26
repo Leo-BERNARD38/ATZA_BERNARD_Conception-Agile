@@ -3,7 +3,7 @@ extends Node2D
 @onready var card_text := $Sprite2D/Valeur_carte as Label
 @onready var audio_node := $Son as AudioStreamPlayer2D
 @export var valeur_carte = 0.0
-@onready var Player_hand_node := $".." as Control
+@onready var Player_hand_node := $".." as Node2D
 var animation_weight = 0.2
 var is_hovered = false
 var base_scale = 0.3

@@ -3,19 +3,23 @@
 [ext_resource type="Script" path="res://UI/Player_hand/player_hand.gd" id="1_mf3r3"]
 [ext_resource type="PackedScene" uid="uid://bww7yy3nfddo0" path="res://assets/carte/carte.tscn" id="3_jpyad"]
 
-[node name="PlayerHand" type="Control" node_paths=PackedStringArray("current_hand", "DEBUG_TEXT")]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="PlayerHand" type="Node2D" node_paths=PackedStringArray("current_hand", "DEBUG_TEXT", "timer_turn", "ID_joueur")]
 script = ExtResource("1_mf3r3")
 current_hand = NodePath("MarginContainer/VBoxContainer/main_hand")
 DEBUG_TEXT = NodePath("DEBUG")
+timer_turn = NodePath("Switch_time")
+ID_joueur = NodePath("Nom_joueur")
+
+[node name="Nom_joueur" type="Label" parent="."]
+layout_direction = 1
+offset_left = -640.0
+offset_top = -125.0
+offset_right = 640.0
+offset_bottom = -92.0
+text = "HEHEHEHE"
+horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -86,8 +90,14 @@ scale = Vector2(0.4, 0.4)
 valeur_carte = 100.0
 
 [node name="DEBUG" type="Label" parent="."]
-layout_mode = 0
 offset_left = 344.0
 offset_top = -171.0
 offset_right = 384.0
 offset_bottom = -148.0
+
+[node name="Switch_time" type="Timer" parent="."]
+process_callback = 0
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Switch_time" to="." method="_on_switch_time_timeout"]

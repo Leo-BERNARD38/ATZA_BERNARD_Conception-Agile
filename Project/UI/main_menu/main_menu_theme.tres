@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://j4j5fa0l3vp2"]
+
+[ext_resource type="FontFile" uid="uid://b3vet2mhfqf32" path="res://fonts/ui/Louis George Cafe.ttf" id="1_rf266"]
+
+[resource]
+default_font = ExtResource("1_rf266")
+default_font_size = 26
