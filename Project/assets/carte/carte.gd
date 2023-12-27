@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var card_text := $Sprite2D/Valeur_carte as Label
+@export var card_text: Label
 @onready var audio_node := $Son as AudioStreamPlayer2D
 @export var valeur_carte = 0.0
 @onready var Player_hand_node := $".." as Node2D
@@ -38,8 +38,9 @@ func _ready():
 # en principe cette fonction n'atteindra donc jamais la valeur du 2nd paramètre, mais elle s'en rapprochera de + en + lentement jusqu'à ce que ce soit parfaitement invisible
 # donc ici animation_weight est la variable qui définit la vitesse de l'animation, plus elle est grande plus l'animation est rapide, et inversement.
 func reset_pos():
-	global_position.x = lerpf(global_position.x,base_pos.x, animation_weight)
-	global_position.y = lerpf(global_position.y,base_pos.y, animation_weight)
+	if current_state:
+		global_position.x = lerpf(global_position.x,base_pos.x, animation_weight)
+		global_position.y = lerpf(global_position.y,base_pos.y, animation_weight)
 
 #on change la valeur de la carte
 func valuechange(a):
@@ -93,8 +94,8 @@ func get_to_pos(a):
 	global_position.x = lerpf(global_position.x,a.x, animation_weight)
 	global_position.y = lerpf(global_position.y,a.y, animation_weight)
 
-func on_pickup():
-	
+func suppression():
+	queue_free()
 	pass
 
 
@@ -119,12 +120,25 @@ func _process(delta):
 	#... la carte active (qu'on est en train de bouger quoi) devient CETTE carte (self) et le joueur prendra donc cette carte
 	#... la position de la carte dépendra alors de la position du curseur ( drag() )
 	#... la fonction get_on_top change l'ordre des assets 2D, on veut pas que la carte prise par le joueur se retrouve en background
-	if((is_hovered) and (Input.is_action_pressed("left_click")) and (current_state) and ((Player_hand_node.active_card_node == self) or (Player_hand_node.active_card_node == null))):
-			Player_hand_node.set_debug_text(self)
-			Player_hand_node.active_card_node = self
-			Player_hand_node.took_a_card = true
-			drag()
-			get_on_top(true)
+	if current_state:
+		if((is_hovered) and (Input.is_action_pressed("left_click")) and (current_state) and ((Player_hand_node.active_card_node == self) or (Player_hand_node.active_card_node == null))):
+				Player_hand_node.active_card_node = self
+				Player_hand_node.took_a_card = true
+				drag()
+				get_on_top(true)
+		
+		if(Player_hand_node.active_card_node == null):
+			resize_animation(is_hovered)
+		if (is_placed):
+			drop()
+		else:
+			if(!Input.is_action_pressed("left_click")):
+				drop()
+				Player_hand_node.active_card_node = null
+				if Player_hand_node.took_a_card == true:
+					Player_hand_node.took_a_card = false
+				get_on_top(false)
+			pass
 	pass
 
 func _physics_process(delta):
@@ -132,16 +146,5 @@ func _physics_process(delta):
 	#Faire des animations par le code demande un rafraîchissement stable
 	#... donc on met ces animations dans la fonction physics_process(delta) qui se rafraîchit selon les ticks du projet (qu'on peut changer si on veut)
 	#...  
-	if(Player_hand_node.active_card_node == null):
-		resize_animation(is_hovered)
-	if (is_placed):
-		drop()
-	else:
-		if(!Input.is_action_pressed("left_click")):
-			drop()
-			Player_hand_node.active_card_node = null
-			if Player_hand_node.took_a_card == true:
-				Player_hand_node.took_a_card = false
-			get_on_top(false)
-		pass
+	pass
 

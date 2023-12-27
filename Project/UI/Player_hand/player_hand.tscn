@@ -3,38 +3,10 @@
 [ext_resource type="Script" path="res://UI/Player_hand/player_hand.gd" id="1_mf3r3"]
 [ext_resource type="PackedScene" uid="uid://bww7yy3nfddo0" path="res://assets/carte/carte.tscn" id="3_jpyad"]
 
-[node name="PlayerHand" type="Node2D" node_paths=PackedStringArray("current_hand", "DEBUG_TEXT", "timer_turn", "ID_joueur")]
+[node name="PlayerHand" type="Node2D" node_paths=PackedStringArray("DEBUG_TEXT", "ID_joueur")]
 script = ExtResource("1_mf3r3")
-current_hand = NodePath("MarginContainer/VBoxContainer/main_hand")
-DEBUG_TEXT = NodePath("DEBUG")
-timer_turn = NodePath("Switch_time")
+DEBUG_TEXT = NodePath("MarginContainer/DEBUG")
 ID_joueur = NodePath("Nom_joueur")
-
-[node name="Nom_joueur" type="Label" parent="."]
-layout_direction = 1
-offset_left = -640.0
-offset_top = -125.0
-offset_right = 640.0
-offset_bottom = -92.0
-text = "HEHEHEHE"
-horizontal_alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 8
-alignment = 2
-
-[node name="main_hand" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_direction = 1
-layout_mode = 2
-alignment = 1
 
 [node name="carte" parent="." instance=ExtResource("3_jpyad")]
 position = Vector2(-560, 0)
@@ -58,46 +30,60 @@ valeur_carte = 2.0
 [node name="carte5" parent="." instance=ExtResource("3_jpyad")]
 position = Vector2(-112, 0)
 scale = Vector2(0.4, 0.4)
-valeur_carte = 5.0
+valeur_carte = 3.0
 
 [node name="carte6" parent="." instance=ExtResource("3_jpyad")]
 scale = Vector2(0.4, 0.4)
-valeur_carte = 8.0
+valeur_carte = 5.0
 
 [node name="carte7" parent="." instance=ExtResource("3_jpyad")]
 position = Vector2(112, 0)
 scale = Vector2(0.4, 0.4)
-valeur_carte = 13.0
+valeur_carte = 8.0
 
 [node name="carte8" parent="." instance=ExtResource("3_jpyad")]
 position = Vector2(224, 0)
 scale = Vector2(0.4, 0.4)
-valeur_carte = 20.0
+valeur_carte = 13.0
 
 [node name="carte9" parent="." instance=ExtResource("3_jpyad")]
 position = Vector2(336, 0)
 scale = Vector2(0.4, 0.4)
-valeur_carte = 40.0
+valeur_carte = 20.0
 
 [node name="carte10" parent="." instance=ExtResource("3_jpyad")]
 position = Vector2(448, 0)
 scale = Vector2(0.4, 0.4)
-valeur_carte = 60.0
+valeur_carte = 40.0
 
 [node name="carte11" parent="." instance=ExtResource("3_jpyad")]
 position = Vector2(560, 0)
 scale = Vector2(0.4, 0.4)
 valeur_carte = 100.0
 
-[node name="DEBUG" type="Label" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 offset_left = 344.0
 offset_top = -171.0
 offset_right = 384.0
-offset_bottom = -148.0
+offset_bottom = -131.0
 
-[node name="Switch_time" type="Timer" parent="."]
-process_callback = 0
-wait_time = 2.0
-one_shot = true
+[node name="DEBUG" type="Label" parent="MarginContainer"]
+layout_mode = 2
 
-[connection signal="timeout" from="Switch_time" to="." method="_on_switch_time_timeout"]
+[node name="Nom_joueur" type="MarginContainer" parent="."]
+light_mask = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -84.0
+offset_top = 86.0
+offset_right = 84.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Nom_joueur_label" type="Label" parent="Nom_joueur"]
+layout_direction = 1
+layout_mode = 2
+text = "HEHEHEHE"
+horizontal_alignment = 1

@@ -1,6 +1,7 @@
 extends ColorRect
 
 @onready var main_menu = get_parent()
+@onready var game_instance = main_menu.get_parent()
 @export var drop_menu: OptionButton
 
 # Called when the node enters the scene tree for the first time.
@@ -36,6 +37,6 @@ func _on_back_pressed():
 
 func _on_option_button_item_selected(index):
 	main_menu.get_selected_sound()
-	
+	game_instance.load_game(str(drop_menu.get_item_text(index)))
 	
 	pass # Replace with function body.

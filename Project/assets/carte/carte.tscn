@@ -8,29 +8,31 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_16b8f"]
 size = Vector2(256, 356)
 
-[node name="carte" type="Node2D"]
+[node name="carte" type="Node2D" node_paths=PackedStringArray("card_text")]
 z_index = 1
 script = ExtResource("1_jg8g5")
+card_text = NodePath("Sprite2D/MarginContainer/Valeur_carte")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_07t6i")
 
-[node name="Valeur_carte" type="Label" parent="Sprite2D"]
-anchors_preset = 14
-anchor_top = 0.5
+[node name="MarginContainer" type="MarginContainer" parent="Sprite2D"]
+anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 0.5
+anchor_bottom = 1.001
 offset_left = -128.0
-offset_top = -189.0
+offset_top = -177.0
 offset_right = -128.0
-offset_bottom = -166.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_bottom = -177.355
+
+[node name="Valeur_carte" type="Label" parent="Sprite2D/MarginContainer"]
+layout_mode = 2
 theme = ExtResource("3_b3tq0")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 100
 text = "100"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="clickingarea" type="Area2D" parent="."]
 

@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://3t3mjmyxamhi"]
+
+[ext_resource type="Script" path="res://scenes/game_instance.gd" id="1_mdixf"]
+[ext_resource type="PackedScene" uid="uid://c8bkyd6snw8br" path="res://UI/main_menu/main_menu.tscn" id="2_kochq"]
+[ext_resource type="PackedScene" uid="uid://cmt1ygnyy8ru1" path="res://scenes/partie.tscn" id="3_vbwvy"]
+
+[node name="Game_Instance" type="Node"]
+script = ExtResource("1_mdixf")
+title_screen = ExtResource("2_kochq")
+partie = ExtResource("3_vbwvy")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmt1ygnyy8ru1"]
+[gd_scene load_steps=16 format=3 uid="uid://cmt1ygnyy8ru1"]
 
 [ext_resource type="Script" path="res://scenes/partie.gd" id="1_xtlrp"]
 [ext_resource type="PackedScene" uid="uid://bt3c7c068skgb" path="res://UI/Player_hand/player_hand.tscn" id="2_rp074"]
@@ -6,47 +6,214 @@
 [ext_resource type="PackedScene" uid="uid://0im478i4048h" path="res://assets/bulle_tache/bulle_tache.tscn" id="4_b21fn"]
 [ext_resource type="FontFile" uid="uid://b3vet2mhfqf32" path="res://fonts/ui/Louis George Cafe.ttf" id="5_me3c2"]
 
-[sub_resource type="Animation" id="Animation_4opw0"]
+[sub_resource type="Animation" id="Animation_bp6x0"]
+resource_name = "hand_drawn_J1"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerHand1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 250), Vector2(0, 1000)]
+}
+
+[sub_resource type="Animation" id="Animation_gisnp"]
+resource_name = "hand_drawn_J2"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerHand2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 250), Vector2(0, 1000)]
+}
+
+[sub_resource type="Animation" id="Animation_jwi7j"]
+resource_name = "hand_drawn_J3"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerHand3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 250), Vector2(0, 1000)]
+}
+
+[sub_resource type="Animation" id="Animation_i6rtv"]
+resource_name = "hand_drawn_J4"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerHand4:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 250), Vector2(0, 1000)]
+}
+
+[sub_resource type="Animation" id="Animation_eyhqb"]
+resource_name = "hand_drawn_J5"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerHand5:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 250), Vector2(0, 1000)]
+}
+
+[sub_resource type="Animation" id="Animation_h1eyr"]
+resource_name = "hand_drawn_J6"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerHand6:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 250), Vector2(0, 1000)]
+}
+
+[sub_resource type="Animation" id="Animation_o54jj"]
+resource_name = "hand_drawn_J7"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerHand7:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 250), Vector2(0, 1000)]
+}
+
+[sub_resource type="Animation" id="Animation_6jl3n"]
+resource_name = "hand_drawn_J8"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerHand8:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 250), Vector2(0, 1000)]
+}
+
+[sub_resource type="Animation" id="Animation_r8lho"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerHand:position")
+tracks/0/path = NodePath("PlayerHand4:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 250)]
+"values": [Vector2(0, 1000)]
 }
-
-[sub_resource type="Animation" id="Animation_bp6x0"]
-resource_name = "hand_drawn"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerHand:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerHand5:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 250), Vector2(0, 1000)]
+"values": [Vector2(0, 1000)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerHand6:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1000)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerHand7:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1000)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerHand8:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1000)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j51q5"]
 _data = {
-"RESET": SubResource("Animation_4opw0"),
-"hand_drawn": SubResource("Animation_bp6x0")
+"RESET": SubResource("Animation_r8lho"),
+"hand_drawn_J1": SubResource("Animation_bp6x0"),
+"hand_drawn_J2": SubResource("Animation_gisnp"),
+"hand_drawn_J3": SubResource("Animation_jwi7j"),
+"hand_drawn_J4": SubResource("Animation_i6rtv"),
+"hand_drawn_J5": SubResource("Animation_eyhqb"),
+"hand_drawn_J6": SubResource("Animation_h1eyr"),
+"hand_drawn_J7": SubResource("Animation_o54jj"),
+"hand_drawn_J8": SubResource("Animation_6jl3n")
 }
 
 [node name="partie" type="Node2D" node_paths=PackedStringArray("timer_label", "player_hand", "droping_area", "hand_anim")]
 script = ExtResource("1_xtlrp")
 timer_label = NodePath("Timer_visual")
-player_hand = NodePath("PlayerHand")
+player_hand = NodePath("PlayerHand1")
 droping_area = NodePath("Card_Drop_Area")
 hand_anim = NodePath("HandAnimation")
 
@@ -57,14 +224,48 @@ libraries = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="PlayerHand" parent="." node_paths=PackedStringArray("scene_partie") instance=ExtResource("2_rp074")]
-position = Vector2(0, 250)
-scene_partie = NodePath("..")
+[node name="PlayerHand1" parent="." instance=ExtResource("2_rp074")]
+position = Vector2(0, 1000)
+
+[node name="PlayerHand2" parent="." node_paths=PackedStringArray("DEBUG_TEXT", "ID_joueur") instance=ExtResource("2_rp074")]
+position = Vector2(0, 1000)
+DEBUG_TEXT = NodePath("../PlayerHand1/MarginContainer/DEBUG")
+ID_joueur = NodePath("../PlayerHand1/Nom_joueur")
+
+[node name="PlayerHand3" parent="." node_paths=PackedStringArray("DEBUG_TEXT", "ID_joueur") instance=ExtResource("2_rp074")]
+position = Vector2(0, 1000)
+DEBUG_TEXT = NodePath("../PlayerHand1/MarginContainer/DEBUG")
+ID_joueur = NodePath("../PlayerHand1/Nom_joueur")
+
+[node name="PlayerHand4" parent="." node_paths=PackedStringArray("DEBUG_TEXT", "ID_joueur") instance=ExtResource("2_rp074")]
+position = Vector2(0, 1000)
+DEBUG_TEXT = NodePath("../PlayerHand1/MarginContainer/DEBUG")
+ID_joueur = NodePath("../PlayerHand1/Nom_joueur")
+
+[node name="PlayerHand5" parent="." node_paths=PackedStringArray("DEBUG_TEXT", "ID_joueur") instance=ExtResource("2_rp074")]
+position = Vector2(0, 1000)
+DEBUG_TEXT = NodePath("../PlayerHand1/MarginContainer/DEBUG")
+ID_joueur = NodePath("../PlayerHand1/Nom_joueur")
+
+[node name="PlayerHand6" parent="." node_paths=PackedStringArray("DEBUG_TEXT", "ID_joueur") instance=ExtResource("2_rp074")]
+position = Vector2(0, 1000)
+DEBUG_TEXT = NodePath("../PlayerHand1/MarginContainer/DEBUG")
+ID_joueur = NodePath("../PlayerHand1/Nom_joueur")
+
+[node name="PlayerHand7" parent="." node_paths=PackedStringArray("DEBUG_TEXT", "ID_joueur") instance=ExtResource("2_rp074")]
+position = Vector2(0, 1000)
+DEBUG_TEXT = NodePath("../PlayerHand1/MarginContainer/DEBUG")
+ID_joueur = NodePath("../PlayerHand1/Nom_joueur")
+
+[node name="PlayerHand8" parent="." node_paths=PackedStringArray("DEBUG_TEXT", "ID_joueur") instance=ExtResource("2_rp074")]
+position = Vector2(0, 1000)
+DEBUG_TEXT = NodePath("../PlayerHand1/MarginContainer/DEBUG")
+ID_joueur = NodePath("../PlayerHand1/Nom_joueur")
 
 [node name="Card_Drop_Area" parent="." node_paths=PackedStringArray("player_hand_node", "scene_partie") instance=ExtResource("3_i21aq")]
 position = Vector2(500, -70)
 scale = Vector2(0.5, 0.5)
-player_hand_node = NodePath("../PlayerHand")
+player_hand_node = NodePath("../PlayerHand1")
 scene_partie = NodePath("..")
 
 [node name="bulle_tache" parent="." instance=ExtResource("4_b21fn")]
@@ -93,4 +294,18 @@ theme_override_fonts/font = ExtResource("5_me3c2")
 text = "placer votre carte ici"
 horizontal_alignment = 1
 
+[node name="Save_Button" type="Button" parent="."]
+offset_left = 500.0
+offset_top = -350.0
+offset_right = 550.0
+offset_bottom = -300.0
+
+[node name="Quit_Button" type="Button" parent="."]
+offset_left = 575.0
+offset_top = -350.0
+offset_right = 625.0
+offset_bottom = -300.0
+
 [connection signal="timeout" from="Timer_visual/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Save_Button" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="Quit_Button" to="." method="_on_quit_button_pressed"]

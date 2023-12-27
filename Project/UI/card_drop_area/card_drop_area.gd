@@ -38,7 +38,7 @@ func _process(delta):
 	#... la case est donc prise donc is_taken = true
 	#... la nouvelle position de la carte prise par le joueur (player_hand_node.active_card_node.new_pos) devient celle de CETTE case
 	#... le joueur n'a donc plus de carte en main car la carte a été placée, plus de carte active ni de carte prise par le joueur (on pourrait sans doute dégager la variable took_a_card de la node player_hand_node)
-	if (Input.is_action_just_released("left_click") and (is_taken == false) and (is_hovered) and (player_hand_node.took_a_card)):
+	if (!Input.is_action_pressed("left_click") and (is_taken == false) and (is_hovered) and (player_hand_node.took_a_card)):
 		#Input.is_action_just_released("left_click") et (is_hovered) non suspects
 		player_hand_node.active_card_node.is_placed = true
 		card_value = player_hand_node.active_card_node.valeur_carte
@@ -46,11 +46,12 @@ func _process(delta):
 		player_hand_node.active_card_node.new_pos = self.global_position
 		label_debug.text = str(player_hand_node.active_card_node.valeur_carte)
 		
-		player_hand_node.active_card_node.queue_free()
+		player_hand_node.active_card_node.suppression()
 		player_hand_node.took_a_card = false
 		player_hand_node.active_card_node = null
+		#ENVOI DES DONNEES ICI
 		player_hand_node.next_turn_phase()
-		#slot_purge()
+		slot_purge()
 		pass
 	pass
 
