@@ -6,7 +6,7 @@
 [node name="PlayerHand" type="Node2D" node_paths=PackedStringArray("DEBUG_TEXT", "ID_joueur")]
 script = ExtResource("1_mf3r3")
 DEBUG_TEXT = NodePath("MarginContainer/DEBUG")
-ID_joueur = NodePath("Nom_joueur")
+ID_joueur = NodePath("")
 
 [node name="carte" parent="." instance=ExtResource("3_jpyad")]
 position = Vector2(-560, 0)
@@ -69,20 +69,3 @@ offset_bottom = -131.0
 
 [node name="DEBUG" type="Label" parent="MarginContainer"]
 layout_mode = 2
-
-[node name="Nom_joueur" type="MarginContainer" parent="."]
-light_mask = 0
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -84.0
-offset_top = 86.0
-offset_right = 84.0
-offset_bottom = 112.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Nom_joueur_label" type="Label" parent="Nom_joueur"]
-layout_direction = 1
-layout_mode = 2
-horizontal_alignment = 1
