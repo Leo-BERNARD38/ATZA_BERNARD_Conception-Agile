@@ -120,7 +120,7 @@ func player_taking_cards():
 	print("prends les cartes")
 	for i in range(nbr_joueur):
 		if (tour == get_node("PlayerHand" + str(i+1)).num_identifier):
-			hand_anim.play("hand_drawn_J" + str(i+1))
+			hand_anim.play_backwards("hand_drawn_J" + str(i+1))
 			print(str("hand_drawn_J" + str(i+1)) + " prends ses cartes")
 		else:
 			hand_anim.play("hand_drawn_J" + str(i+1))
@@ -145,7 +145,7 @@ pass
 
 func gameover():
 	print("partie terminé")
-	get_tree().quit()
+	hand_anim.play("table_scroll")
 	pass
 
 func save_game():
@@ -156,6 +156,8 @@ func save_game():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if(Input.is_action_just_pressed("test_key")):
+		gameover()
 	pass
 
 func _physics_process(delta):
