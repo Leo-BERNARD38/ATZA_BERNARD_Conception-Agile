@@ -1,10 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://cmt1ygnyy8ru1"]
+[gd_scene load_steps=18 format=3 uid="uid://cmt1ygnyy8ru1"]
 
 [ext_resource type="Script" path="res://scenes/partie.gd" id="1_xtlrp"]
+[ext_resource type="Theme" uid="uid://j4j5fa0l3vp2" path="res://UI/main_menu/main_menu_theme.tres" id="2_f5yul"]
 [ext_resource type="PackedScene" uid="uid://bt3c7c068skgb" path="res://UI/Player_hand/player_hand.tscn" id="2_rp074"]
 [ext_resource type="PackedScene" uid="uid://ds8u74cjd5ph7" path="res://UI/card_drop_area/card_drop_area.tscn" id="3_i21aq"]
 [ext_resource type="PackedScene" uid="uid://0im478i4048h" path="res://assets/bulle_tache/bulle_tache.tscn" id="4_b21fn"]
 [ext_resource type="FontFile" uid="uid://b3vet2mhfqf32" path="res://fonts/ui/Louis George Cafe.ttf" id="5_me3c2"]
+[ext_resource type="Texture2D" uid="uid://c1hpu8lsuie2l" path="res://UI/icons/save.png" id="6_a6384"]
+[ext_resource type="Texture2D" uid="uid://b1b2lnwftunia" path="res://UI/icons/main_menu.png" id="7_p4h7o"]
 
 [sub_resource type="Animation" id="Animation_bp6x0"]
 resource_name = "hand_drawn_J1"
@@ -134,72 +137,8 @@ tracks/0/keys = {
 "values": [Vector2(0, 250), Vector2(0, 1000)]
 }
 
-[sub_resource type="Animation" id="Animation_r8lho"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerHand4:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 1000)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerHand5:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 1000)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerHand6:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 1000)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerHand7:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 1000)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("PlayerHand8:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 1000)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j51q5"]
 _data = {
-"RESET": SubResource("Animation_r8lho"),
 "hand_drawn_J1": SubResource("Animation_bp6x0"),
 "hand_drawn_J2": SubResource("Animation_gisnp"),
 "hand_drawn_J3": SubResource("Animation_jwi7j"),
@@ -210,14 +149,45 @@ _data = {
 "hand_drawn_J8": SubResource("Animation_6jl3n")
 }
 
-[node name="partie" type="Node2D" node_paths=PackedStringArray("timer_label", "player_hand", "droping_area", "hand_anim")]
+[node name="partie" type="Node2D" node_paths=PackedStringArray("timer_label", "droping_area", "hand_anim", "bulle_de_tache", "tour_label", "manche_label")]
 script = ExtResource("1_xtlrp")
 timer_label = NodePath("Timer_visual")
-player_hand = NodePath("PlayerHand1")
 droping_area = NodePath("Card_Drop_Area")
 hand_anim = NodePath("HandAnimation")
+bulle_de_tache = NodePath("bulle_tache")
+tour_label = NodePath("Tour")
+manche_label = NodePath("Manche")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.545098, 0.588235, 0.835294, 1)
+
+[node name="Tour" type="Label" parent="."]
+offset_left = -600.0
+offset_top = -200.0
+offset_right = -537.0
+offset_bottom = -167.0
+theme = ExtResource("2_f5yul")
+text = "Tour :"
+
+[node name="Manche" type="Label" parent="."]
+offset_left = -600.0
+offset_top = -248.0
+offset_right = -496.0
+offset_bottom = -215.0
+theme = ExtResource("2_f5yul")
+text = "Manche :"
 
 [node name="HandAnimation" type="AnimationPlayer" parent="."]
+reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_j51q5")
 }
@@ -262,10 +232,9 @@ position = Vector2(0, 1000)
 DEBUG_TEXT = NodePath("../PlayerHand1/MarginContainer/DEBUG")
 ID_joueur = NodePath("../PlayerHand1/Nom_joueur")
 
-[node name="Card_Drop_Area" parent="." node_paths=PackedStringArray("player_hand_node", "scene_partie") instance=ExtResource("3_i21aq")]
+[node name="Card_Drop_Area" parent="." node_paths=PackedStringArray("scene_partie") instance=ExtResource("3_i21aq")]
 position = Vector2(500, -70)
 scale = Vector2(0.5, 0.5)
-player_hand_node = NodePath("../PlayerHand1")
 scene_partie = NodePath("..")
 
 [node name="bulle_tache" parent="." instance=ExtResource("4_b21fn")]
@@ -299,12 +268,16 @@ offset_left = 500.0
 offset_top = -350.0
 offset_right = 550.0
 offset_bottom = -300.0
+icon = ExtResource("6_a6384")
+expand_icon = true
 
 [node name="Quit_Button" type="Button" parent="."]
 offset_left = 575.0
 offset_top = -350.0
 offset_right = 625.0
 offset_bottom = -300.0
+icon = ExtResource("7_p4h7o")
+expand_icon = true
 
 [connection signal="timeout" from="Timer_visual/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Save_Button" to="." method="_on_save_button_pressed"]

@@ -5,13 +5,13 @@ extends Node2D
 @export var ID_joueur: MarginContainer
 
 var nom_joueur = ""
+var num_identifier
 
-var took_a_card = false
+@onready var took_a_card = false
 var active_card_node
 
 var current_card_count
 var round_counter = 0
-
 
 @onready var index_who_plays = 0
 #COMMENTAIRE D'EN-TÊTE
@@ -33,13 +33,7 @@ func next_turn_phase():
 	#SI ON A FAIT LE TOUR DE TOUS LES JOUEURS (if joueur == joueur4) ON FAIT endround()
 	pass
 
-func endround():
-	round_counter += 1
-	#on revient au joueur1
-	pass
 
-func envoyer_donnees():
-	pass
 
 func set_player_name(nom):
 	ID_joueur.get_child(0).text = str(nom)

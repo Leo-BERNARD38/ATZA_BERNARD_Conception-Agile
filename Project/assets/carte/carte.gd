@@ -52,6 +52,8 @@ func update_card_state():
 	card_text.text = str(valeur_carte)
 
 func drag():
+	Player_hand_node.active_card_node = self
+	Player_hand_node.took_a_card = true
 	global_position.x = get_global_mouse_position().x 
 	global_position.y = get_global_mouse_position().y
 	pass
@@ -61,12 +63,12 @@ func drop():
 	#... si la carte est placée (dans une case) alors la variable is_placed (booléen) sera changé par la node de la case (cf: card_drop_area.gd)
 	#... et donc si la carte est placée alors la carte placée prendra les mêmes coordonnées que la case
 	#... sinon elle reviendra à sa position d'origine avec reset_pos()
-	
 	if (is_placed):
-		global_position.x = lerpf(global_position.x,new_pos.x, animation_weight)
-		global_position.y = lerpf(global_position.y,new_pos.y, animation_weight)
+		queue_free()
 	else:
 		reset_pos()
+	Player_hand_node.active_card_node = null
+	Player_hand_node.took_a_card = false
 	pass
 
 func resize_animation(boolean):
@@ -95,7 +97,7 @@ func get_to_pos(a):
 	global_position.y = lerpf(global_position.y,a.y, animation_weight)
 
 func suppression():
-	queue_free()
+	get_parent().remove_child(self)
 	pass
 
 
@@ -122,8 +124,6 @@ func _process(delta):
 	#... la fonction get_on_top change l'ordre des assets 2D, on veut pas que la carte prise par le joueur se retrouve en background
 	if current_state:
 		if((is_hovered) and (Input.is_action_pressed("left_click")) and (current_state) and ((Player_hand_node.active_card_node == self) or (Player_hand_node.active_card_node == null))):
-				Player_hand_node.active_card_node = self
-				Player_hand_node.took_a_card = true
 				drag()
 				get_on_top(true)
 		
@@ -134,7 +134,7 @@ func _process(delta):
 		else:
 			if(!Input.is_action_pressed("left_click")):
 				drop()
-				Player_hand_node.active_card_node = null
+				
 				if Player_hand_node.took_a_card == true:
 					Player_hand_node.took_a_card = false
 				get_on_top(false)

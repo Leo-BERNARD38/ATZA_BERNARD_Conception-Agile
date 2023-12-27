@@ -33,7 +33,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Joueur 1 :"
 
-[node name="TextEdit" type="TextEdit" parent="Player_List/Player1"]
+[node name="pseudo_joueur1" type="TextEdit" parent="Player_List/Player1"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 placeholder_text = "Joueur 1"
@@ -46,7 +46,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Joueur 2 :"
 
-[node name="TextEdit" type="TextEdit" parent="Player_List/Player2"]
+[node name="pseudo_joueur2" type="TextEdit" parent="Player_List/Player2"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 placeholder_text = "Joueur 2"
@@ -59,7 +59,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Joueur 3 :"
 
-[node name="TextEdit" type="TextEdit" parent="Player_List/Player3"]
+[node name="pseudo_joueur3" type="TextEdit" parent="Player_List/Player3"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 placeholder_text = "Joueur 3"
@@ -72,7 +72,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Joueur 4 :"
 
-[node name="TextEdit" type="TextEdit" parent="Player_List/Player4"]
+[node name="pseudo_joueur4" type="TextEdit" parent="Player_List/Player4"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 placeholder_text = "Joueur 4"
@@ -85,7 +85,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Joueur 5 :"
 
-[node name="TextEdit" type="TextEdit" parent="Player_List/Player5"]
+[node name="pseudo_joueur5" type="TextEdit" parent="Player_List/Player5"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 placeholder_text = "Joueur 5"
@@ -98,7 +98,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Joueur 6 :"
 
-[node name="TextEdit" type="TextEdit" parent="Player_List/Player6"]
+[node name="pseudo_joueur6" type="TextEdit" parent="Player_List/Player6"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 placeholder_text = "Joueur 6"
@@ -111,7 +111,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Joueur 7 :"
 
-[node name="TextEdit" type="TextEdit" parent="Player_List/Player7"]
+[node name="pseudo_joueur7" type="TextEdit" parent="Player_List/Player7"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 placeholder_text = "Joueur 7"
@@ -124,7 +124,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Joueur 8 :"
 
-[node name="TextEdit" type="TextEdit" parent="Player_List/Player8"]
+[node name="pseudo_joueur8" type="TextEdit" parent="Player_List/Player8"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 placeholder_text = "Joueur 8"
@@ -203,6 +203,14 @@ text = "Mediane
 layout_mode = 2
 text = "Retour"
 
+[connection signal="text_changed" from="Player_List/Player1/pseudo_joueur1" to="." method="_on_pseudo_joueur_1_text_changed"]
+[connection signal="text_changed" from="Player_List/Player2/pseudo_joueur2" to="." method="_on_pseudo_joueur_2_text_changed"]
+[connection signal="text_changed" from="Player_List/Player3/pseudo_joueur3" to="." method="_on_pseudo_joueur_3_text_changed"]
+[connection signal="text_changed" from="Player_List/Player4/pseudo_joueur4" to="." method="_on_pseudo_joueur_4_text_changed"]
+[connection signal="text_changed" from="Player_List/Player5/pseudo_joueur5" to="." method="_on_pseudo_joueur_5_text_changed"]
+[connection signal="text_changed" from="Player_List/Player6/pseudo_joueur6" to="." method="_on_pseudo_joueur_6_text_changed"]
+[connection signal="text_changed" from="Player_List/Player7/pseudo_joueur7" to="." method="_on_pseudo_joueur_7_text_changed"]
+[connection signal="text_changed" from="Player_List/Player8/pseudo_joueur8" to="." method="_on_pseudo_joueur_8_text_changed"]
 [connection signal="text_changed" from="VBoxContainer/Nom_Partie" to="." method="_on_nom_partie_text_changed"]
 [connection signal="item_selected" from="VBoxContainer/HBoxContainer/ColorRect/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="VBoxContainer/Moyenne" to="." method="_on_moyenne_pressed"]

@@ -31,6 +31,9 @@ func unlock_mode_de_jeu(boolean):
 
 
 func export_data():
+	for i in range(gonna_export_nbr_joueurs-1):
+		if(gonna_export_noms_joueurs[i] == ""): 
+			gonna_export_noms_joueurs[i] = "Joueur " + str(i+1) 
 	var save_data = {
 		"rules" : {
 			"m" : 0,
@@ -39,6 +42,8 @@ func export_data():
 			"tour" : 0,
 			"gamemode" : str(gonna_export_mode_de_jeu),
 			"nbrjoueurs" : gonna_export_nbr_joueurs,
+			"mancheresMOY" : 0,
+			"mancheresMED" : []
 		},
 		
 		"Joueurs" : {
@@ -68,7 +73,8 @@ func export_data():
 			"13" : "Apprendre à utiliser un nouvel outil",
 			"14" : "Trouver une place de parking",
 			"15" : "Anticiper les accidents"
-		}
+		},
+		"resultats" : ["","","","","","","","","","",""]
 	}
 	
 	return save_data
@@ -93,12 +99,12 @@ func _on_retour_pressed():
 func _on_option_button_item_selected(index):
 	main_menu.get_selected_sound()
 	gonna_export_nbr_joueurs = index+2
-	for i in range(7):
-		if((gonna_export_nbr_joueurs-1)<index):
-			player_list.get_child(i+index).visible = true
-		else:
-			player_list.get_child(index).get_child(1).text = ""
+	for i in range(8):
+		if((i+1) >(index + 2)):
+			player_list.get_child(i).get_child(1).text = ""
 			player_list.get_child(i).visible = false
+		else:
+			player_list.get_child(i).visible = true
 		pass
 	
 	pass # Replace with function body.
@@ -107,7 +113,6 @@ func _on_option_button_item_selected(index):
 func _on_mediane_pressed():
 	main_menu.get_selected_sound()
 	gonna_export_mode_de_jeu = "Mediane"
-	export_data()
 	game_instance.create_json_file(gonna_export_nom_partie, export_data())
 	game_instance.load_game(gonna_export_nom_partie)
 	pass # Replace with function body.
@@ -116,7 +121,6 @@ func _on_mediane_pressed():
 func _on_moyenne_pressed():
 	main_menu.get_selected_sound()
 	gonna_export_mode_de_jeu = "Moyenne"
-	export_data()
 	game_instance.create_json_file(gonna_export_nom_partie,export_data())
 	game_instance.load_game(gonna_export_nom_partie)
 	pass # Replace with function body.
@@ -127,4 +131,37 @@ func _on_nom_partie_text_changed():
 		gonna_export_nom_partie = nom_partie.text
 	else:
 		unlock_mode_de_jeu(false)
+	pass # Replace with function body.
+
+
+func _on_pseudo_joueur_1_text_changed():
+	gonna_export_noms_joueurs[0] = player_list.get_child(0).get_child(1).text
+	pass
+
+func _on_pseudo_joueur_2_text_changed():
+	gonna_export_noms_joueurs[1] = player_list.get_child(1).get_child(1).text
+	pass # Replace with function body.
+
+func _on_pseudo_joueur_3_text_changed():
+	gonna_export_noms_joueurs[2] = player_list.get_child(2).get_child(1).text
+	pass # Replace with function body.
+
+func _on_pseudo_joueur_4_text_changed():
+	gonna_export_noms_joueurs[3] = player_list.get_child(3).get_child(1).text
+	pass # Replace with function body.
+
+func _on_pseudo_joueur_5_text_changed():
+	gonna_export_noms_joueurs[4] = player_list.get_child(4).get_child(1).text
+	pass # Replace with function body.
+
+func _on_pseudo_joueur_6_text_changed():
+	gonna_export_noms_joueurs[5] = player_list.get_child(5).get_child(1).text
+	pass # Replace with function body.
+
+func _on_pseudo_joueur_7_text_changed():
+	gonna_export_noms_joueurs[6] = player_list.get_child(6).get_child(1).text
+	pass # Replace with function body.
+
+func _on_pseudo_joueur_8_text_changed():
+	gonna_export_noms_joueurs[7] = player_list.get_child(7).get_child(1).text
 	pass # Replace with function body.

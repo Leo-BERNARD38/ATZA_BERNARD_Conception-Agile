@@ -85,5 +85,4 @@ grow_vertical = 2
 [node name="Nom_joueur_label" type="Label" parent="Nom_joueur"]
 layout_direction = 1
 layout_mode = 2
-text = "HEHEHEHE"
 horizontal_alignment = 1
