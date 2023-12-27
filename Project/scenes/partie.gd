@@ -6,16 +6,11 @@ extends Node2D
 @export var bulle_de_tache: Node2D
 @export var tour_label: Label
 @export var manche_label: Label
+@export var table_score: Node2D
+@export var draw_card_timer: Timer
+@export var player_name_label: Label
 
-@onready var player_hand1 = self.get_node("PlayerHand1")
-@onready var player_hand2 = self.get_node("PlayerHand2")
-@onready var player_hand3 = self.get_node("PlayerHand3")
-@onready var player_hand4 = self.get_node("PlayerHand4")
-@onready var player_hand5 = self.get_node("PlayerHand5")
-@onready var player_hand6 = self.get_node("PlayerHand6")
-@onready var player_hand7 = self.get_node("PlayerHand7")
-@onready var player_hand8 = self.get_node("PlayerHand8")
-
+@export var debug_label: Label
 
 @onready var game_instance = self.get_parent()
 
@@ -45,7 +40,7 @@ func init_vars(GAMEDATA):
 	print(GAMEDATA)
 	gametime_s = GAMEDATA["rules"]["s"]
 	gametime_m = GAMEDATA["rules"]["m"]
-	manche = GAMEDATA["rules"]["manche"]
+	manche = int(GAMEDATA["rules"]["manche"])
 	tour = GAMEDATA["rules"]["tour"]
 	manche_result_moy = GAMEDATA["rules"]["mancheresMOY"]
 	manche_result_med = GAMEDATA["rules"]["mancheresMED"]
@@ -53,11 +48,13 @@ func init_vars(GAMEDATA):
 	gamemode = GAMEDATA["rules"]["gamemode"]
 	for i in range(11):
 		game_results[i] =  GAMEDATA["resultats"][i]
-	for i in range(nbr_joueur):
-		get_node("PlayerHand" + str(i+1)).set_player_name(GAMEDATA["Joueurs"][str(i+1)])
-		get_node("PlayerHand" + str(i+1)).num_identifier = i
+		table_score.add_line(game_results[i],i+1)
 	refresh_timer(false)
 	game_start_or_reloaded()
+
+func initialisation_pseudos():
+	draw_card_timer.start()
+	pass
 
 func input_value_for_current_task(value):
 	if(gamemode == "Moyenne"):
@@ -65,7 +62,9 @@ func input_value_for_current_task(value):
 		curr_GAMEDATA["rules"]["mancheresMOY"] = manche_result_moy
 		if (tour == (nbr_joueur-1)):
 			manche_result_moy = roundf(manche_result_moy/nbr_joueur*100)/100
-			game_results[manche] = str(current_task) + "... score obtenu : " + str(manche_result_moy)
+			game_results[manche-1] = str(current_task) + "... score obtenu : " + str(manche_result_moy)
+			curr_GAMEDATA["resultats"][manche-1] = game_results[manche-1]
+			table_score.add_line(game_results[manche-1],manche)
 			manche_result_moy = 0
 	else:
 		manche_result_med.append(value)
@@ -73,20 +72,22 @@ func input_value_for_current_task(value):
 		curr_GAMEDATA["rules"]["mancheresMED"] = manche_result_med
 		if (tour == (nbr_joueur-1)):
 			manche_result_med.sort_custom(func(a, b): return a.naturalnocasecmp_to(b) < 0)
-			game_results[manche] = str(current_task) +"Score obtenu : " + str(manche_result_med[round((nbr_joueur-1)/2)])
+			game_results[manche-1] = str(current_task) +"Score obtenu : " + str(manche_result_med[round((nbr_joueur-1)/2)])
+			curr_GAMEDATA["resultats"][manche-1] = game_results[manche-1]
+			table_score.add_line(game_results[manche-1],manche+1)
 			manche_result_med = []
 
 func pop_task():
 	if(manche == 0):
 		current_task = curr_GAMEDATA["tasks"][str(randi_range(1,15))]
 	else:
-		var truc = randi_range(0,14)
+		var truc = randi_range(0,14)+1
 		var already_here = true
 		while already_here:
-			truc = randi_range(0,14)
-			for i in range(14):
+			truc = randi_range(0,14) +1
+			for i in range(11):
 				if (already_here):
-					if(curr_GAMEDATA["tasks"][str(truc)] == game_results[i+1]):
+					if(curr_GAMEDATA["tasks"][str(truc)] == game_results[i]):
 						already_here = true
 					else:
 						already_here = false
@@ -97,8 +98,12 @@ func pop_task():
 
 func game_start_or_reloaded():
 	pop_task()
-	player_taking_cards()
 	tour_debug()
+	if(game_results[10] != ""):
+		gameover()
+	else:
+		if(manche<11):
+			draw_card_timer.start()
 	pass
 
 func next_turn():
@@ -107,7 +112,8 @@ func next_turn():
 		tour = 0
 		next_round()
 	curr_GAMEDATA["rules"]["tour"] = tour
-	player_taking_cards()
+	if(manche<11):
+		draw_card_timer.start()
 	tour_debug()
 	pass
 
@@ -120,17 +126,17 @@ func player_taking_cards():
 	print("prends les cartes")
 	for i in range(nbr_joueur):
 		if (tour == get_node("PlayerHand" + str(i+1)).num_identifier):
-			hand_anim.play_backwards("hand_drawn_J" + str(i+1))
-			print(str("hand_drawn_J" + str(i+1)) + " prends ses cartes")
+			get_node("PlayerHand" + str(i+1)).visible = true
+			print(str("hand_drawn_J" + str(i+1) ) + " prends ses cartes")
 		else:
-			hand_anim.play("hand_drawn_J" + str(i+1))
+			get_node("PlayerHand" + str(i+1)).visible = false
 			print(str("hand_drawn_J" + str(i+1)) + " range ses cartes")
 	for i in range(8-nbr_joueur):
 		print(str("hand_drawn_J" + str(i+1+nbr_joueur)) + " n'a pas de carte")
 	pass
 
 func next_round():
-	if(manche>15):
+	if(manche>10):
 		gameover()
 	else:
 		pop_task()
@@ -144,6 +150,10 @@ func next_round():
 pass
 
 func gameover():
+	table_score.change_gamemode(gamemode)
+	bulle_de_tache.get_child(0).text = ""
+	for i in range(nbr_joueur):
+		get_node("PlayerHand" + str(i+1)).visible = false
 	print("partie terminé")
 	hand_anim.play("table_scroll")
 	pass
@@ -157,7 +167,13 @@ func save_game():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if(Input.is_action_just_pressed("test_key")):
-		gameover()
+#		draw_card_timer.start()
+#		hand_anim.play("hand_drawn_J"+ str(tour+1))
+#	if(tour != null):
+#		debug_label.text = str(get_node("PlayerHand" + str(tour+1)).global_position.y)
+#		debug_label.text = str(get_node("PlayerHand" + str(tour+1)))
+#		debug_label.text = str(draw_card_timer.time_left)
+		pass
 	pass
 
 func _physics_process(delta):
@@ -187,7 +203,8 @@ func refresh_timer(boolean):
 	pass
 
 func _on_timer_timeout():
-	refresh_timer(true)
+	if (game_results[10] == ""):
+		refresh_timer(true)
 
 
 func _on_save_button_pressed():
@@ -197,4 +214,16 @@ func _on_save_button_pressed():
 
 func _on_quit_button_pressed():
 	game_instance.main_menu()
+	pass # Replace with function body.
+
+
+func _on_draw_card_timer_timeout():
+	if(manche<11):
+		player_name_label.text = str("Joueur actuel : " + curr_GAMEDATA["Joueurs"][str(tour+1)])
+		for i in range(nbr_joueur):
+			print(str(curr_GAMEDATA["Joueurs"][str(i+1)]))
+			get_node("PlayerHand" + str(i+1)).num_identifier = i
+		player_taking_cards()
+	else:
+		player_name_label.text = ""
 	pass # Replace with function body.

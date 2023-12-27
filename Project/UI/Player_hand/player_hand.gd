@@ -3,8 +3,6 @@ extends Node2D
 @export var DEBUG_TEXT: Label
 @onready var scene_partie = self.get_parent()
 @export var ID_joueur: MarginContainer
-
-var nom_joueur = ""
 var num_identifier
 
 @onready var took_a_card = false
@@ -33,7 +31,9 @@ func next_turn_phase():
 	#SI ON A FAIT LE TOUR DE TOUS LES JOUEURS (if joueur == joueur4) ON FAIT endround()
 	pass
 
-
+func init_names():
+	scene_partie.initialisation_pseudos()
+	pass
 
 func set_player_name(nom):
 	ID_joueur.get_child(0).text = str(nom)

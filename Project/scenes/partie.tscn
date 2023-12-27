@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cmt1ygnyy8ru1"]
+[gd_scene load_steps=12 format=3 uid="uid://cmt1ygnyy8ru1"]
 
 [ext_resource type="Script" path="res://scenes/partie.gd" id="1_xtlrp"]
 [ext_resource type="Theme" uid="uid://j4j5fa0l3vp2" path="res://UI/main_menu/main_menu_theme.tres" id="2_f5yul"]
@@ -9,134 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://c1hpu8lsuie2l" path="res://UI/icons/save.png" id="6_a6384"]
 [ext_resource type="Texture2D" uid="uid://b1b2lnwftunia" path="res://UI/icons/main_menu.png" id="7_p4h7o"]
 [ext_resource type="PackedScene" uid="uid://cmr47b5fw62eb" path="res://UI/table_result/table_result.tscn" id="9_jsvo1"]
-
-[sub_resource type="Animation" id="Animation_bp6x0"]
-resource_name = "hand_drawn_J1"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerHand1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 1000), Vector2(0, 250)]
-}
-
-[sub_resource type="Animation" id="Animation_gisnp"]
-resource_name = "hand_drawn_J2"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerHand2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 1000), Vector2(0, 250)]
-}
-
-[sub_resource type="Animation" id="Animation_jwi7j"]
-resource_name = "hand_drawn_J3"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerHand3:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 1000), Vector2(0, 250)]
-}
-
-[sub_resource type="Animation" id="Animation_i6rtv"]
-resource_name = "hand_drawn_J4"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerHand4:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 1000), Vector2(0, 250)]
-}
-
-[sub_resource type="Animation" id="Animation_eyhqb"]
-resource_name = "hand_drawn_J5"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerHand5:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 1000), Vector2(0, 250)]
-}
-
-[sub_resource type="Animation" id="Animation_h1eyr"]
-resource_name = "hand_drawn_J6"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerHand6:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 1000), Vector2(0, 250)]
-}
-
-[sub_resource type="Animation" id="Animation_o54jj"]
-resource_name = "hand_drawn_J7"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerHand7:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 1000), Vector2(0, 250)]
-}
-
-[sub_resource type="Animation" id="Animation_6jl3n"]
-resource_name = "hand_drawn_J8"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerHand8:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 1000), Vector2(0, 250)]
-}
 
 [sub_resource type="Animation" id="Animation_ovvb8"]
 resource_name = "table_scroll"
@@ -155,18 +27,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j51q5"]
 _data = {
-"hand_drawn_J1": SubResource("Animation_bp6x0"),
-"hand_drawn_J2": SubResource("Animation_gisnp"),
-"hand_drawn_J3": SubResource("Animation_jwi7j"),
-"hand_drawn_J4": SubResource("Animation_i6rtv"),
-"hand_drawn_J5": SubResource("Animation_eyhqb"),
-"hand_drawn_J6": SubResource("Animation_h1eyr"),
-"hand_drawn_J7": SubResource("Animation_o54jj"),
-"hand_drawn_J8": SubResource("Animation_6jl3n"),
 "table_scroll": SubResource("Animation_ovvb8")
 }
 
-[node name="partie" type="Node2D" node_paths=PackedStringArray("timer_label", "droping_area", "hand_anim", "bulle_de_tache", "tour_label", "manche_label")]
+[node name="partie" type="Node2D" node_paths=PackedStringArray("timer_label", "droping_area", "hand_anim", "bulle_de_tache", "tour_label", "manche_label", "table_score", "draw_card_timer", "player_name_label", "debug_label")]
 script = ExtResource("1_xtlrp")
 timer_label = NodePath("Timer_visual")
 droping_area = NodePath("Card_Drop_Area")
@@ -174,6 +38,10 @@ hand_anim = NodePath("HandAnimation")
 bulle_de_tache = NodePath("bulle_tache")
 tour_label = NodePath("Tour")
 manche_label = NodePath("Manche")
+table_score = NodePath("table_result")
+draw_card_timer = NodePath("Draw_Card_Timer")
+player_name_label = NodePath("player_label")
+debug_label = NodePath("debug_label")
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -187,21 +55,57 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.545098, 0.588235, 0.835294, 1)
 
+[node name="Draw_Card_Timer" type="Timer" parent="."]
+wait_time = 0.001
+one_shot = true
+autostart = true
+
 [node name="Tour" type="Label" parent="."]
-offset_left = -600.0
-offset_top = -200.0
-offset_right = -537.0
-offset_bottom = -167.0
+offset_left = -448.0
+offset_top = -344.0
+offset_right = -385.0
+offset_bottom = -311.0
 theme = ExtResource("2_f5yul")
 text = "Tour :"
 
 [node name="Manche" type="Label" parent="."]
-offset_left = -600.0
-offset_top = -248.0
-offset_right = -496.0
-offset_bottom = -215.0
+offset_left = -344.0
+offset_top = -344.0
+offset_right = -240.0
+offset_bottom = -311.0
 theme = ExtResource("2_f5yul")
 text = "Manche :"
+
+[node name="Timer_visual" type="Label" parent="."]
+offset_left = -614.0
+offset_top = -353.0
+offset_right = -397.0
+offset_bottom = -248.0
+theme_override_fonts/font = ExtResource("5_me3c2")
+theme_override_font_sizes/font_size = 46
+text = "00:00"
+
+[node name="Timer" type="Timer" parent="Timer_visual"]
+process_callback = 0
+autostart = true
+
+[node name="player_label" type="Label" parent="."]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -671.0
+offset_top = 128.0
+offset_right = 671.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_f5yul")
+text = "Joueur : "
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HandAnimation" type="AnimationPlayer" parent="."]
 reset_on_save = false
@@ -212,70 +116,57 @@ libraries = {
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="PlayerHand1" parent="." instance=ExtResource("2_rp074")]
-position = Vector2(0, 1000)
+position = Vector2(0, 250)
 
-[node name="PlayerHand2" parent="." node_paths=PackedStringArray("DEBUG_TEXT", "ID_joueur") instance=ExtResource("2_rp074")]
-position = Vector2(0, 1000)
+[node name="PlayerHand2" parent="." node_paths=PackedStringArray("DEBUG_TEXT") instance=ExtResource("2_rp074")]
+visible = false
+position = Vector2(0, 250)
 DEBUG_TEXT = NodePath("../PlayerHand1/MarginContainer/DEBUG")
-ID_joueur = NodePath("../PlayerHand1/Nom_joueur")
 
-[node name="PlayerHand3" parent="." node_paths=PackedStringArray("DEBUG_TEXT", "ID_joueur") instance=ExtResource("2_rp074")]
-position = Vector2(0, 1000)
+[node name="PlayerHand3" parent="." node_paths=PackedStringArray("DEBUG_TEXT") instance=ExtResource("2_rp074")]
+visible = false
+position = Vector2(0, 250)
 DEBUG_TEXT = NodePath("../PlayerHand1/MarginContainer/DEBUG")
-ID_joueur = NodePath("../PlayerHand1/Nom_joueur")
 
-[node name="PlayerHand4" parent="." node_paths=PackedStringArray("DEBUG_TEXT", "ID_joueur") instance=ExtResource("2_rp074")]
-position = Vector2(0, 1000)
+[node name="PlayerHand4" parent="." node_paths=PackedStringArray("DEBUG_TEXT") instance=ExtResource("2_rp074")]
+visible = false
+position = Vector2(0, 250)
 DEBUG_TEXT = NodePath("../PlayerHand1/MarginContainer/DEBUG")
-ID_joueur = NodePath("../PlayerHand1/Nom_joueur")
 
-[node name="PlayerHand5" parent="." node_paths=PackedStringArray("DEBUG_TEXT", "ID_joueur") instance=ExtResource("2_rp074")]
-position = Vector2(0, 1000)
+[node name="PlayerHand5" parent="." node_paths=PackedStringArray("DEBUG_TEXT") instance=ExtResource("2_rp074")]
+visible = false
+position = Vector2(0, 250)
 DEBUG_TEXT = NodePath("../PlayerHand1/MarginContainer/DEBUG")
-ID_joueur = NodePath("../PlayerHand1/Nom_joueur")
 
-[node name="PlayerHand6" parent="." node_paths=PackedStringArray("DEBUG_TEXT", "ID_joueur") instance=ExtResource("2_rp074")]
-position = Vector2(0, 1000)
+[node name="PlayerHand6" parent="." node_paths=PackedStringArray("DEBUG_TEXT") instance=ExtResource("2_rp074")]
+visible = false
+position = Vector2(0, 250)
 DEBUG_TEXT = NodePath("../PlayerHand1/MarginContainer/DEBUG")
-ID_joueur = NodePath("../PlayerHand1/Nom_joueur")
 
-[node name="PlayerHand7" parent="." node_paths=PackedStringArray("DEBUG_TEXT", "ID_joueur") instance=ExtResource("2_rp074")]
-position = Vector2(0, 1000)
+[node name="PlayerHand7" parent="." node_paths=PackedStringArray("DEBUG_TEXT") instance=ExtResource("2_rp074")]
+visible = false
+position = Vector2(0, 250)
 DEBUG_TEXT = NodePath("../PlayerHand1/MarginContainer/DEBUG")
-ID_joueur = NodePath("../PlayerHand1/Nom_joueur")
 
-[node name="PlayerHand8" parent="." node_paths=PackedStringArray("DEBUG_TEXT", "ID_joueur") instance=ExtResource("2_rp074")]
-position = Vector2(0, 1000)
+[node name="PlayerHand8" parent="." node_paths=PackedStringArray("DEBUG_TEXT") instance=ExtResource("2_rp074")]
+visible = false
+position = Vector2(0, 250)
 DEBUG_TEXT = NodePath("../PlayerHand1/MarginContainer/DEBUG")
-ID_joueur = NodePath("../PlayerHand1/Nom_joueur")
+
+[node name="bulle_tache" parent="." instance=ExtResource("4_b21fn")]
+position = Vector2(0, -48)
+scale = Vector2(0.5, 0.5)
 
 [node name="Card_Drop_Area" parent="." node_paths=PackedStringArray("scene_partie") instance=ExtResource("3_i21aq")]
-position = Vector2(500, -70)
+position = Vector2(0, -6)
 scale = Vector2(0.5, 0.5)
 scene_partie = NodePath("..")
 
-[node name="bulle_tache" parent="." instance=ExtResource("4_b21fn")]
-position = Vector2(0, -80)
-scale = Vector2(0.5, 0.5)
-
-[node name="Timer_visual" type="Label" parent="."]
-offset_left = -601.0
-offset_top = -321.0
-offset_right = -384.0
-offset_bottom = -216.0
-theme_override_fonts/font = ExtResource("5_me3c2")
-theme_override_font_sizes/font_size = 46
-text = "00:00"
-
-[node name="Timer" type="Timer" parent="Timer_visual"]
-process_callback = 0
-autostart = true
-
 [node name="desc_depot" type="Label" parent="."]
-offset_left = 395.0
-offset_top = 33.0
-offset_right = 602.12
-offset_bottom = 59.0
+offset_left = -253.0
+offset_top = -15.0
+offset_right = -45.88
+offset_bottom = 11.0
 theme_override_fonts/font = ExtResource("5_me3c2")
 text = "placer votre carte ici"
 horizontal_alignment = 1
@@ -300,6 +191,14 @@ expand_icon = true
 position = Vector2(0, -800)
 scale = Vector2(0.809209, 0.809209)
 
+[node name="debug_label" type="Label" parent="."]
+offset_left = -588.0
+offset_top = -72.0
+offset_right = -388.0
+offset_bottom = -39.0
+theme = ExtResource("2_f5yul")
+
+[connection signal="timeout" from="Draw_Card_Timer" to="." method="_on_draw_card_timer_timeout"]
 [connection signal="timeout" from="Timer_visual/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Save_Button" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="Quit_Button" to="." method="_on_quit_button_pressed"]
