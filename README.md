@@ -17,7 +17,7 @@ Ce projet est développé en utilisant le moteur de jeu Godot. Godot est un mote
 
 > [!NOTE]
 > Le dossier d'enregistrement du .json se trouve ici :
-> save_directory : ```AppData\Roaming\Godot\app_userdata\ATZA_BERNARD_Projet_CAPI\saves```
+> ```AppData\Roaming\Godot\app_userdata\ATZA_BERNARD_Projet_CAPI\saves```
 
 ## Installation
 
