@@ -9,7 +9,8 @@ extends Node2D
 @export var table_score: Node2D
 @export var draw_card_timer: Timer
 @export var player_name_label: Label
-
+@export var partie_name: Label
+	
 @export var debug_label: Label
 
 @onready var game_instance = self.get_parent()
@@ -110,6 +111,7 @@ func next_turn():
 	tour+=1
 	if(tour>(nbr_joueur-1)):
 		tour = 0
+		manche+=1
 		next_round()
 	curr_GAMEDATA["rules"]["tour"] = tour
 	if(manche<10):
@@ -123,6 +125,7 @@ func tour_debug():
 	pass
 
 func player_taking_cards():
+	partie_name.text = str(game_name)
 	print("prends les cartes")
 	for i in range(nbr_joueur):
 		if (tour == get_node("PlayerHand" + str(i+1)).num_identifier):
@@ -136,7 +139,7 @@ func player_taking_cards():
 	pass
 
 func next_round():
-	if(manche>10):
+	if(manche>9):
 		gameover()
 	else:
 		pop_task()
@@ -144,11 +147,13 @@ func next_round():
 			manche_result_moy = 0
 		else:
 			manche_result_med = []
-	manche+=1
+	if(manche > 9):
+		gameover()
 	curr_GAMEDATA["rules"]["manche"] = manche
 pass
 
 func gameover():
+	partie_name.text = str(game_name)
 	table_score.change_gamemode(gamemode)
 	bulle_de_tache.get_child(0).text = ""
 	for i in range(nbr_joueur):
@@ -202,7 +207,7 @@ func refresh_timer(boolean):
 	pass
 
 func _on_timer_timeout():
-	if (game_results[10] == ""):
+	if (manche < 10):
 		refresh_timer(true)
 
 

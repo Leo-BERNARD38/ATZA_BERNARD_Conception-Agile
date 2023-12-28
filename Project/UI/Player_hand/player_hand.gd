@@ -20,17 +20,6 @@ func _ready():
 	pass # Replace with function body.
 
 
-func next_turn_phase():
-	if(current_card_count>0):
-		current_card_count -= current_card_count
-		set_debug_text(str(current_card_count))
-	for i in range(current_card_count):
-		get_child(i).current_state = false
-	scene_partie.hand_anim.play("hand_hide")
-	#CHANGEMENT DE JOUEUR
-	#SI ON A FAIT LE TOUR DE TOUS LES JOUEURS (if joueur == joueur4) ON FAIT endround()
-	pass
-
 func init_names():
 	scene_partie.initialisation_pseudos()
 	pass

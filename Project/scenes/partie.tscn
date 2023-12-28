@@ -30,7 +30,7 @@ _data = {
 "table_scroll": SubResource("Animation_ovvb8")
 }
 
-[node name="partie" type="Node2D" node_paths=PackedStringArray("timer_label", "droping_area", "hand_anim", "bulle_de_tache", "tour_label", "manche_label", "table_score", "draw_card_timer", "player_name_label", "debug_label")]
+[node name="partie" type="Node2D" node_paths=PackedStringArray("timer_label", "droping_area", "hand_anim", "bulle_de_tache", "tour_label", "manche_label", "table_score", "draw_card_timer", "player_name_label", "partie_name", "debug_label")]
 script = ExtResource("1_xtlrp")
 timer_label = NodePath("Timer_visual")
 droping_area = NodePath("Card_Drop_Area")
@@ -41,16 +41,17 @@ manche_label = NodePath("Manche")
 table_score = NodePath("table_result")
 draw_card_timer = NodePath("Draw_Card_Timer")
 player_name_label = NodePath("player_label")
+partie_name = NodePath("Nom_partie")
 debug_label = NodePath("debug_label")
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -640.0
-offset_top = -360.0
-offset_right = 640.0
-offset_bottom = 360.0
+offset_left = -1769.0
+offset_top = -642.0
+offset_right = 1769.0
+offset_bottom = 642.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.545098, 0.588235, 0.835294, 1)
@@ -88,6 +89,20 @@ text = "00:00"
 [node name="Timer" type="Timer" parent="Timer_visual"]
 process_callback = 0
 autostart = true
+
+[node name="Nom_partie" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = -352.0
+offset_right = 128.0
+offset_bottom = -306.0
+grow_horizontal = 2
+theme = ExtResource("2_f5yul")
+theme_override_font_sizes/font_size = 28
+text = "Nom de la partie"
+horizontal_alignment = 1
 
 [node name="player_label" type="Label" parent="."]
 clip_contents = true
@@ -192,6 +207,7 @@ position = Vector2(0, -800)
 scale = Vector2(0.809209, 0.809209)
 
 [node name="debug_label" type="Label" parent="."]
+visible = false
 offset_left = -588.0
 offset_top = -72.0
 offset_right = -388.0

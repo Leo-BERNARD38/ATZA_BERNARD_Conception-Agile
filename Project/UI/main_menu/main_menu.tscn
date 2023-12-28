@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8bkyd6snw8br"]
+[gd_scene load_steps=13 format=3 uid="uid://c8bkyd6snw8br"]
 
 [ext_resource type="Script" path="res://UI/main_menu/main_menu.gd" id="1_62hsx"]
 [ext_resource type="Theme" uid="uid://j4j5fa0l3vp2" path="res://UI/main_menu/main_menu_theme.tres" id="1_k64cd"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://qt2gws28lxet" path="res://UI/main_menu/main_menu_music.wav" id="4_4m8xq"]
 [ext_resource type="AudioStream" uid="uid://hrcp5n2kdwua" path="res://UI/selected.wav" id="4_4ndqu"]
 [ext_resource type="AudioStream" uid="uid://cjxuur1kyc7b4" path="res://UI/notification.wav" id="5_52wxh"]
+[ext_resource type="Theme" uid="uid://dy7jnp30hmped" path="res://assets/carte/carte.theme" id="8_qia8f"]
 
 [sub_resource type="Animation" id="Animation_oidd5"]
 length = 0.001
@@ -90,6 +91,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.894118, 0.784314, 0.776471, 1)
+
+[node name="TITRE" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.406
+anchor_right = 0.883
+anchor_bottom = 1.0
+offset_left = 0.319946
+offset_right = -0.23999
+grow_horizontal = 2
+theme = ExtResource("8_qia8f")
+theme_override_font_sizes/font_size = 170
+text = "PLANNING
+POKER"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
