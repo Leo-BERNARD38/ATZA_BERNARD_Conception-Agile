@@ -25,7 +25,7 @@ Ce projet est développé en utilisant le moteur de jeu Godot. Godot est un mote
 2. Ouvrez le projet dans Godot.
 3. Compilez et exécutez le projet.
 
-** Pour jouer au jeu :**
+**Pour jouer au jeu :**
 Executez simplement le fichier .exe
 
 ## Documentation
