@@ -2,6 +2,7 @@
 
 Ce projet a été créé par Maxime ATZA et Léo BERNARD.
 
+> créé avec Godot 4
 ---
 
 ## Description
@@ -12,11 +13,11 @@ Ce projet vise à développer une application utilisant la méthodologie de Conc
 
 Ce projet est développé en utilisant le moteur de jeu Godot. Godot est un moteur de jeu open-source et multiplateforme qui offre une grande flexibilité et des fonctionnalités avancées pour le développement de jeux.
 
-## Fonctionnalités
+## Spécificitées
 
-- Fonctionnalité 1 : [à remplir]
-- Fonctionnalité 2 : [à remplir]
-- Fonctionnalité 3 : [à remplir]
+> [!NOTE]
+> Le dossier d'enregistrement du .json se trouve ici :
+> save_directory : ```AppData\Roaming\Godot\app_userdata\ATZA_BERNARD_Projet_CAPI\saves```
 
 ## Installation
 
