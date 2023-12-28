@@ -26,6 +26,8 @@ func _ready():
 	hoveringSFX.volume_db = -80 + 50*volume_effects
 	selectedSFX.volume_db = -80 + 50*(volume_effects-0.3)
 	backSFX.volume_db = -80 + 50*volume_effects
+	self.get_parent().music_volume = float(volume_song)
+	self.get_parent().music_value = float(50)
 	animation.play("fade_in")
 
 func get_hovered_sound():
@@ -98,6 +100,8 @@ func _on_main_menu_music_finished():
 
 
 func _on_h_slider_value_changed(value):
+	self.get_parent().music_volume = float(volume_song)
+	self.get_parent().music_value = float(value)
 	title_screen_song.volume_db = -80 + value*volume_song  #-80 -30 20 range de 100 en partant de -80
 	hoveringSFX.volume_db = -80 + value*volume_effects
 	selectedSFX.volume_db = -80 + value*(volume_effects-0.2)

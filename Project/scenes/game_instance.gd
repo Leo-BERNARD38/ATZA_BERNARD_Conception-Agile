@@ -4,6 +4,7 @@ extends Node
 @export var partie: PackedScene
 
 var music_volume
+var music_value
 
 
 @onready var save_dir_path = "user://saves/"

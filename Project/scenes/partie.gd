@@ -10,7 +10,8 @@ extends Node2D
 @export var draw_card_timer: Timer
 @export var player_name_label: Label
 @export var partie_name: Label
-	
+@export var music_player: AudioStreamPlayer2D
+
 @export var debug_label: Label
 
 @onready var game_instance = self.get_parent()
@@ -28,6 +29,7 @@ var tour
 var gamemode = ""
 var manche_result_moy
 var manche_result_med
+var old_tasks = ["","","","","","","","","","",""]
 var current_task
 
 
@@ -81,41 +83,49 @@ func input_value_for_current_task(value):
 func pop_task():
 	if(manche == 0):
 		current_task = curr_GAMEDATA["tasks"][str(randi_range(1,15))]
+		old_tasks[manche] = current_task
 	else:
-		var truc = randi_range(0,14)+1
+		var truc = randi_range(1,15)
 		var already_here = true
-		while already_here:
-			truc = randi_range(0,14) +1
+		while (already_here):
+			truc = randi_range(1,15)
 			for i in range(11):
 				if (already_here):
-					if(curr_GAMEDATA["tasks"][str(truc)] == game_results[i]):
+					if((current_task == curr_GAMEDATA["tasks"][str(truc)]) or (old_tasks[i]) == curr_GAMEDATA["tasks"][str(truc)]):
 						already_here = true
 					else:
 						already_here = false
+		old_tasks[manche] = current_task
 		current_task = curr_GAMEDATA["tasks"][str(truc)]
-	
 	bulle_de_tache.change_task(current_task)
 	pass
 
 func game_start_or_reloaded():
+	music_player.volume_db = -80 + (game_instance.music_value * game_instance.music_volume)
 	pop_task()
 	tour_debug()
 	if(game_results[10] != ""):
 		gameover()
 	else:
-		if(manche<10):
+		if((manche<11) and (tour<=(nbr_joueur-1))):
 			draw_card_timer.start()
 	pass
 
 func next_turn():
 	tour+=1
-	if(tour>(nbr_joueur-1)):
+	if(tour>nbr_joueur-1):
 		tour = 0
 		manche+=1
-		next_round()
+		if(manche>10):
+			gameover()
+		else:
+			next_round()
 	curr_GAMEDATA["rules"]["tour"] = tour
-	if(manche<10):
+	if((manche==10) and (tour==(nbr_joueur-1))):
+		gameover()
+	else:
 		draw_card_timer.start()
+	
 	tour_debug()
 	pass
 
@@ -139,7 +149,7 @@ func player_taking_cards():
 	pass
 
 func next_round():
-	if(manche>9):
+	if((manche>9) and (tour>=nbr_joueur-1)):
 		gameover()
 	else:
 		pop_task()
@@ -147,8 +157,6 @@ func next_round():
 			manche_result_moy = 0
 		else:
 			manche_result_med = []
-	if(manche > 9):
-		gameover()
 	curr_GAMEDATA["rules"]["manche"] = manche
 pass
 
@@ -207,7 +215,7 @@ func refresh_timer(boolean):
 	pass
 
 func _on_timer_timeout():
-	if (manche < 10):
+	if ((manche < 10) and (tour< nbr_joueur-1)):
 		refresh_timer(true)
 
 

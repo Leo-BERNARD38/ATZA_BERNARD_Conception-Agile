@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://cmt1ygnyy8ru1"]
+[gd_scene load_steps=13 format=3 uid="uid://cmt1ygnyy8ru1"]
 
 [ext_resource type="Script" path="res://scenes/partie.gd" id="1_xtlrp"]
+[ext_resource type="AudioStream" uid="uid://dnpfrcsuf2jcs" path="res://scenes/game_music.wav" id="2_av1i2"]
 [ext_resource type="Theme" uid="uid://j4j5fa0l3vp2" path="res://UI/main_menu/main_menu_theme.tres" id="2_f5yul"]
 [ext_resource type="PackedScene" uid="uid://bt3c7c068skgb" path="res://UI/Player_hand/player_hand.tscn" id="2_rp074"]
 [ext_resource type="PackedScene" uid="uid://ds8u74cjd5ph7" path="res://UI/card_drop_area/card_drop_area.tscn" id="3_i21aq"]
@@ -30,7 +31,7 @@ _data = {
 "table_scroll": SubResource("Animation_ovvb8")
 }
 
-[node name="partie" type="Node2D" node_paths=PackedStringArray("timer_label", "droping_area", "hand_anim", "bulle_de_tache", "tour_label", "manche_label", "table_score", "draw_card_timer", "player_name_label", "partie_name", "debug_label")]
+[node name="partie" type="Node2D" node_paths=PackedStringArray("timer_label", "droping_area", "hand_anim", "bulle_de_tache", "tour_label", "manche_label", "table_score", "draw_card_timer", "player_name_label", "partie_name", "music_player", "debug_label")]
 script = ExtResource("1_xtlrp")
 timer_label = NodePath("Timer_visual")
 droping_area = NodePath("Card_Drop_Area")
@@ -42,7 +43,13 @@ table_score = NodePath("table_result")
 draw_card_timer = NodePath("Draw_Card_Timer")
 player_name_label = NodePath("player_label")
 partie_name = NodePath("Nom_partie")
+music_player = NodePath("music")
 debug_label = NodePath("debug_label")
+
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_av1i2")
+volume_db = -29.966
+autoplay = true
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
