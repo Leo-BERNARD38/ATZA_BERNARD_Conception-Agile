@@ -64,14 +64,14 @@ func input_value_for_current_task(value):
 			manche_result_moy = roundf(manche_result_moy/nbr_joueur*100)/100
 			game_results[manche-1] = str(current_task) + "... score obtenu : " + str(manche_result_moy)
 			curr_GAMEDATA["resultats"][manche-1] = game_results[manche-1]
-			table_score.add_line(game_results[manche-1],manche)
+			table_score.add_line(game_results[manche-1],manche+1)
 			manche_result_moy = 0
 	else:
 		manche_result_med.append(value)
-		manche_result_med.sort_custom(func(a, b): return a.naturalnocasecmp_to(b) < 0)
+		manche_result_med.sort() #_custom(func(a, b): return a.naturalnocasecmp_to(b) < 0)
 		curr_GAMEDATA["rules"]["mancheresMED"] = manche_result_med
 		if (tour == (nbr_joueur-1)):
-			manche_result_med.sort_custom(func(a, b): return a.naturalnocasecmp_to(b) < 0)
+			manche_result_med.sort() #sort_custom(func(a, b): return a.naturalnocasecmp_to(b) < 0)
 			game_results[manche-1] = str(current_task) +"Score obtenu : " + str(manche_result_med[round((nbr_joueur-1)/2)])
 			curr_GAMEDATA["resultats"][manche-1] = game_results[manche-1]
 			table_score.add_line(game_results[manche-1],manche+1)
@@ -102,7 +102,7 @@ func game_start_or_reloaded():
 	if(game_results[10] != ""):
 		gameover()
 	else:
-		if(manche<11):
+		if(manche<10):
 			draw_card_timer.start()
 	pass
 
@@ -112,7 +112,7 @@ func next_turn():
 		tour = 0
 		next_round()
 	curr_GAMEDATA["rules"]["tour"] = tour
-	if(manche<11):
+	if(manche<10):
 		draw_card_timer.start()
 	tour_debug()
 	pass
@@ -143,8 +143,7 @@ func next_round():
 		if gamemode == "Moyenne":
 			manche_result_moy = 0
 		else:
-			for i in range(nbr_joueur):
-				manche_result_med[i] = -1
+			manche_result_med = []
 	manche+=1
 	curr_GAMEDATA["rules"]["manche"] = manche
 pass
@@ -218,7 +217,7 @@ func _on_quit_button_pressed():
 
 
 func _on_draw_card_timer_timeout():
-	if(manche<11):
+	if(manche<10):
 		player_name_label.text = str("Joueur actuel : " + curr_GAMEDATA["Joueurs"][str(tour+1)])
 		for i in range(nbr_joueur):
 			print(str(curr_GAMEDATA["Joueurs"][str(i+1)]))

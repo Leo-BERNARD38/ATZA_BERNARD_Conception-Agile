@@ -3,10 +3,9 @@
 [ext_resource type="Script" path="res://UI/Player_hand/player_hand.gd" id="1_mf3r3"]
 [ext_resource type="PackedScene" uid="uid://bww7yy3nfddo0" path="res://assets/carte/carte.tscn" id="3_jpyad"]
 
-[node name="PlayerHand" type="Node2D" node_paths=PackedStringArray("DEBUG_TEXT", "ID_joueur")]
+[node name="PlayerHand" type="Node2D" node_paths=PackedStringArray("DEBUG_TEXT")]
 script = ExtResource("1_mf3r3")
 DEBUG_TEXT = NodePath("MarginContainer/DEBUG")
-ID_joueur = NodePath("")
 
 [node name="carte" parent="." instance=ExtResource("3_jpyad")]
 position = Vector2(-560, 0)
