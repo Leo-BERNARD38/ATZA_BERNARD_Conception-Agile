@@ -95,8 +95,9 @@ func pop_task():
 						already_here = true
 					else:
 						already_here = false
-		old_tasks[manche] = current_task
-		current_task = curr_GAMEDATA["tasks"][str(truc)]
+		if (manche < 11):
+			old_tasks[manche] = current_task
+			current_task = curr_GAMEDATA["tasks"][str(truc)]
 	bulle_de_tache.change_task(current_task)
 	pass
 
@@ -104,11 +105,11 @@ func game_start_or_reloaded():
 	music_player.volume_db = -80 + (game_instance.music_value * game_instance.music_volume)
 	pop_task()
 	tour_debug()
-	if(game_results[10] != ""):
+	if(manche>10):
 		gameover()
+		refresh_timer(false)
 	else:
-		if((manche<11) and (tour<=(nbr_joueur-1))):
-			draw_card_timer.start()
+		draw_card_timer.start()
 	pass
 
 func next_turn():
@@ -116,13 +117,11 @@ func next_turn():
 	if(tour>nbr_joueur-1):
 		tour = 0
 		manche+=1
-		if(manche>10):
-			gameover()
-		else:
-			next_round()
 	curr_GAMEDATA["rules"]["tour"] = tour
-	if((manche==10) and (tour==(nbr_joueur-1))):
+	next_round()
+	if(manche>10):
 		gameover()
+		draw_card_timer.start()
 	else:
 		draw_card_timer.start()
 	
@@ -149,7 +148,7 @@ func player_taking_cards():
 	pass
 
 func next_round():
-	if((manche>9) and (tour>=nbr_joueur-1)):
+	if(manche >10):
 		gameover()
 	else:
 		pop_task()
@@ -215,7 +214,9 @@ func refresh_timer(boolean):
 	pass
 
 func _on_timer_timeout():
-	if ((manche < 10) and (tour< nbr_joueur-1)):
+	if (manche > 10):
+		pass
+	else:
 		refresh_timer(true)
 
 
@@ -230,12 +231,13 @@ func _on_quit_button_pressed():
 
 
 func _on_draw_card_timer_timeout():
-	if(manche<10):
+	if(manche<11):
 		player_name_label.text = str("Joueur actuel : " + curr_GAMEDATA["Joueurs"][str(tour+1)])
 		for i in range(nbr_joueur):
 			print(str(curr_GAMEDATA["Joueurs"][str(i+1)]))
 			get_node("PlayerHand" + str(i+1)).num_identifier = i
 		player_taking_cards()
+		#if ((manche==10) and (tour<=nbr_joueur-1)):
 	else:
 		player_name_label.text = ""
 	pass # Replace with function body.

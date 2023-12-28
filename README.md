@@ -17,7 +17,7 @@ Ce projet est développé en utilisant le moteur de jeu Godot. Godot est un mote
 
 > [!NOTE]
 > Le dossier d'enregistrement du .json se trouve ici :
-> ```AppData\Roaming\Godot\app_userdata\ATZA_BERNARD_Projet_CAPI\saves```
+> ```C:\Users\"you"\AppData\Roaming\Godot\app_userdata\ATZA_BERNARD_Projet_CAPI\saves```
 
 ## Installation
 
@@ -26,7 +26,7 @@ Ce projet est développé en utilisant le moteur de jeu Godot. Godot est un mote
 3. Compilez et exécutez le projet.
 
 **Pour jouer au jeu :**
-Executez simplement le fichier .exe
+Executez simplement le fichier .exe qui se trouve dans le dossier ```Jeu```
 
 ## Documentation
 
