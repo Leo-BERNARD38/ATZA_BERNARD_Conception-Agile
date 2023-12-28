@@ -25,8 +25,10 @@ Ce projet est développé en utilisant le moteur de jeu Godot. Godot est un mote
 2. Ouvrez le projet dans Godot.
 3. Compilez et exécutez le projet.
 
-4. Sinon executez le .exe
+** Pour jouer au jeu :**
+Executez simplement le fichier .exe
 
 ## Documentation
 
 Un compte rendu au format PDF est disponible dans le dépôt.
+```Compte_Rendu_BERNARD_ATZA.pdf```
